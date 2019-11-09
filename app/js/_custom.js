@@ -4,6 +4,7 @@ $(document).ready(function () {
         philosophy = $("#philosophy"),
         secSlider = $("#slider-two"),
         chief = $("#chief"),
+        contacts = $("#contacts-add");
         main = $("main");
 
     function toggleMenu() {
@@ -85,6 +86,10 @@ $(document).ready(function () {
 
             if (left > $(chief).offset().left) {
                 $(this).addClass("black");
+            }
+
+            if (left > $(contacts).offset().left) {
+                $(this).removeClass("black");
             }
         });
     });

@@ -1,0 +1,139 @@
+@import vars
+@import fonts
+@import libs
+
+@media screen and (max-height: 1000px)
+    html
+        body
+            .nav
+                .content
+                    height: 93px
+                    top: -93px
+                    padding: 0 63px
+
+                    ul
+                        font-size: 14px
+
+                .left, .right
+                    width: 63px
+
+                .left
+                    left: -63px
+
+                .right
+                    right: -63px
+
+            .slick-dots
+                bottom: 30px
+
+            >.open-menu
+                top: 30px
+
+            header
+                .bottom-menu
+                    bottom: 30px
+                    left: 40px
+                    right: 40px
+                    font-size: 14px
+
+                    .left
+                        a
+                            font-size: 14px
+
+                .top-menu
+                    top: 30px
+                    left: 40px
+                    right: 40px
+
+            .photo-block
+                .photo-desc
+                    min-width: 460px
+
+            main
+                section
+                    padding:
+                        top: 80px
+                        bottom: 80px
+
+                    .section-title-block
+                        .tag
+                            font-size: 14px
+
+                    &#first-screen
+                        .slider
+                            .slide
+                                .content
+                                    .slide-title
+                                        font-size: 48px
+
+                                    .slide-desc
+                                        font-size: 16px
+
+                    &#chief
+                        .photo-block
+                            .photo-wrapper
+                                .photo
+                                    img
+                                        max-width: 450px
+
+                        .wins
+                            .wins-list
+                                ul
+                                    max-width: 400px
+
+                                .photo
+                                    img
+                                        max-height: 262px
+                                        width: 570px
+
+                                        &.food
+                                            margin-top: -100px
+                                            left: -120px
+                                            max-width: 220px
+
+                    &#enterprise
+                        .photo-block.centered
+                            height: 100%
+
+                            .photo-wrapper
+                                height: 100%
+
+                                .photo
+                                    height: 100%
+
+                                    img
+                                        max-height: 100%
+
+                    &#party
+                        .photo-block
+                            .photo-wrapper
+                                .photo
+                                    img
+                                        max-width: 700px
+
+                    &#menu
+                        .menu
+                            .categories
+                                padding: 40px 0
+
+                    &#press
+                        .press
+                            .press-item
+                                img
+                                    margin-top: 80px
+                                    margin-bottom: 56px
+
+            &.menu-opened
+                >.open-menu
+                    margin-top: 93px
+
+                header
+                    .top-menu
+                        padding: 93px 63px 0 63px
+
+                    .bottom-menu
+                        .left
+                            margin-left: 63px
+
+                        .right
+                            margin-right: 63px

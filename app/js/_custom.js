@@ -4,8 +4,32 @@ $(document).ready(function () {
         philosophy = $("#philosophy"),
         secSlider = $("#slider-two"),
         chief = $("#chief"),
-        contacts = $("#contacts-add");
-        main = $("main");
+        contacts = $("#contacts-add"),
+        main = $("main"),
+        mainScroll = null,
+        vertical = false;
+
+    function mobCheck() {
+        if($(window).width() > 640) {
+            vertical = false;
+        } else {
+            vertical = true;
+        }
+    }
+
+    function reinitPS() {
+        if(vertical) {
+            if(mainScroll) {
+                mainScroll.destroy();
+                mainScroll = null;
+            }
+        } else if(!mainScroll) {
+            mainScroll = new PerfectScrollbar('main', {
+                suppressScrollY: true,
+                useBothWheelAxes: true
+            });
+        }
+    }
 
     function toggleMenu() {
         $("body").toggleClass("menu-opened");
@@ -23,12 +47,10 @@ $(document).ready(function () {
         menuOpened = !menuOpened;
     }
 
-    $(main).css("transform", "scale(1)");
+    mobCheck();
+    reinitPS();
 
-    const mainScroll = new PerfectScrollbar('main', {
-        suppressScrollY: true,
-        useBothWheelAxes: true
-    });
+    $(main).css("transform", "scale(1)");
 
     $("#first-screen .slider").slick({
         arrows: false,
@@ -61,6 +83,13 @@ $(document).ready(function () {
     //Resize
     $(window).on("resize", function () {
         navWidth = $(".nav .left").width()*2;
+        mobCheck();
+        reinitPS();
+    });
+
+    const cetPS = new PerfectScrollbar('.categories', {
+        suppressScrollY: true,
+        useBothWheelAxes: true
     });
 
     //Open menu animation
@@ -71,27 +100,51 @@ $(document).ready(function () {
     let tChanging = $(".theme-changing");
 
     $(main).on('scroll', function () {
-        $(tChanging).each(function () {
-            let left = $(this).offset().left+$(this).width();
+        if(vertical) {
+            $(tChanging).each(function () {
+                let top = $(this).offset().top+$(this).height();
 
-            if (left > $(philosophy).offset().left) {
-                $(this).addClass('black');
-            } else {
-                $(this).removeClass('black');
-            }
+                if (top > $(philosophy).offset().top) {
+                    $(this).addClass('black');
+                } else {
+                    $(this).removeClass('black');
+                }
 
-            if (left > $(secSlider).offset().left) {
-                $(this).removeClass('black');
-            }
+                if (top > $(secSlider).offset().top) {
+                    $(this).removeClass('black');
+                }
 
-            if (left > $(chief).offset().left) {
-                $(this).addClass("black");
-            }
+                if (top > $(chief).offset().top) {
+                    $(this).addClass("black");
+                }
 
-            if (left > $(contacts).offset().left) {
-                $(this).removeClass("black");
-            }
-        });
+                if (top > $(contacts).offset().top) {
+                    $(this).removeClass("black");
+                }
+            });
+        } else {
+            $(tChanging).each(function () {
+                let left = $(this).offset().left+$(this).width();
+
+                if (left > $(philosophy).offset().left) {
+                    $(this).addClass('black');
+                } else {
+                    $(this).removeClass('black');
+                }
+
+                if (left > $(secSlider).offset().left) {
+                    $(this).removeClass('black');
+                }
+
+                if (left > $(chief).offset().left) {
+                    $(this).addClass("black");
+                }
+
+                if (left > $(contacts).offset().left) {
+                    $(this).removeClass("black");
+                }
+            });
+        }
     });
 
     //Navigation hover
@@ -107,6 +160,19 @@ $(document).ready(function () {
 
     $(links).on("mouseout", function () {
         $(main).scrollLeft(prevScroll);
+    });
+
+    $('.swipe-to-next').on("click", function () {
+        let nextSec = $(this).parents('section').next();
+        if(vertical) {
+            $(main).animate({
+                scrollTop: $(nextSec).offset().top
+            }, 500);
+        } else {
+            $(main).animate({
+                scrollLeft: $(nextSec).offset().left
+            }, 500);
+        }
     });
 
     $(links).on("click", function () {

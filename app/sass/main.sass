@@ -4,783 +4,815 @@
 @import circle-animation
 
 *
-	outline: none !important
+    outline: none !important
 
 button.reset-styles
-	background: transparent
-	border: none
-	padding: 0
+    background: transparent
+    border: none
+    padding: 0
 
 body, html, main
-	height: 100%
+    height: 100%
 
 ::placeholder
-	color: #666
+    color: #666
 
 ::selection
-	background-color: $accent
-	color: #fff
+    background-color: $accent
+    color: #fff
 
 input, textarea
-	outline: none
-	&:focus:required:invalid
-		border-color: red
-	&:required:valid
-		border-color: green
+    outline: none
+
+    &:focus:required:invalid
+        border-color: red
+
+    &:required:valid
+        border-color: green
 
 html
-	body
-		font-size: $main-font
-		min-width: 320px
-		position: relative
-		line-height: 1.65
-		font-family: 'Roboto', sans-serif
-		overflow-x: hidden
-		color: $text
-		background-color: #000000
-		letter-spacing: 0.05em
-
-		.slider
-			height: 100%
-
-			*
-				height: 100%
-
-			.slide
-				position: relative
-				background-size: cover
-				background-position: center center
-				background-repeat: no-repeat
-				display: flex
-				padding-left: $section-sides-margin
-				align-items: center
-				justify-content: flex-start
-				width: 100vw
-
-		.photo-block
-			display: flex
-			align-self: flex-start
-
-			.photo-wrapper
-				position: relative
-
-				.num
-					left: -25px
-					font-weight: 700
-					color: black
-					bottom: 2px
-					position: absolute
-					transform: rotate(90deg) scale(-1)
-					display: block
-
-			.photo-desc
-				min-width: 360px
-				font-weight: 300
-				margin-left: 140px
-				font-size: 14px
-
-				button
-					border: 1px solid black
-					padding: 13px 30px
-					font-family: $gotham
-					font-weight: 300
-
-				p
-					margin-bottom: 0
-
-				span
-					display: block
-
-					&:not(:first-child)
-						margin-top: 15px
-
-			&.with-button
-				align-items: flex-end
-
-				.photo-desc
-					button
-						margin-top: 80px
-
-				&.with-label
-					align-items: stretch
-
-					.photo-desc
-						align-items: flex-start
-						display: flex
-						flex-direction: column
-						justify-content: space-between
-
-						.label
-							font-size: 16px
-							font-weight: 600
-
-						button
-							margin-top: 0
-
-		.slick-dots
-			position: absolute
-			left: 0
-			right: 0
-			display: flex
-			justify-content: center
-			bottom: 50px
-			list-style: none
-			padding-left: 0
-			margin-bottom: 0
-
-			li
-				display: flex
-				position: relative
-				height: 16px
-				width: 16px
-				cursor: pointer
-				transform: rotate(-90deg)
-
-				.circle
-					stroke-dasharray: 50.4
-					stroke-dashoffset: 50.4
-
-				&:not(:last-child)
-					margin-right: 40px
-
-				&:before
-					position: absolute
-					content: ""
-					display: block
-					background: rgba(255,255,255,.2)
-					height: 5px
-					width: 5px
-					border-radius: 50%
-					margin-left: 5.5px
-					margin-top: 5.5px
-
-				button
-					display: none
-
-				&.slick-active
-					&:before
-						background: white
-
-					.circle
-						animation: dash 4s linear forwards
-
-		>.open-menu
-			position: fixed
-			z-index: 21
-			top: 50px
-			left: 50%
-			margin-left: -17px
-			margin-top: 0
-			transition: margin-top $menu-open-animation
-
-		.open-menu
-			rect
-				fill: white
-				transition: fill $tc-animation
-
-			&.black
-				rect
-					fill: black
-
-		.nav
-			position: fixed
-			left: 0
-			width: 100%
-			height: 100%
-			top: -100%
-			background-color: rgba(0,0,0,0)
-			transition: background-color $menu-open-animation, top .00001s $menu-open-animation
-			z-index: 20
-
-			.content
-				height: 125px
-				top: -125px
-				width: 100%
-				position: absolute
-				background-color: black
-				z-index: 21
-				left: 0
-				transition: top $menu-open-animation
-				padding: 0 100px
-
-				ul
-					height: 100%
-					padding-left: 0
-					list-style: none
-					margin-bottom: 0
-					display: flex
-					align-items: center
-					justify-content: space-between
-					font-family: $gotham
-					font-size: 16px
-					letter-spacing: 0.05em
-					font-weight: 200
-
-					a
-						color: white
-						text-decoration: none
-
-			.left, .right
-				top: 0
-				height: 100%
-				width: 100px
-				background-color: black
-				position: absolute
-
-			.left
-				left: -100px
-				transition: left .5s
-
-			.right
-				right: -100px
-				transition: right .5s
-
-		header
-			position: fixed
-			z-index: 12
-			font-weight: 300
-			letter-spacing: 0.1em
-
-			.top-menu
-				position: fixed
-				top: 50px
-				left: 50px
-				right: 50px
-				display: flex
-				justify-content: space-between
-				align-items: flex-start
-				padding: 0px
-				transition: padding $menu-open-animation
-				height: 0
-
-				.open-menu
-					display: none
-
-				.logo
-					display: block
-
-					svg
-						*
-							fill: white
-							transition: fill $tc-animation
-
-					&.black
-						svg
-							*
-								fill: black
-
-				.right
-					button
-						border: 1px solid transparent
-						padding: 13px 30px
-						color: white
-						font-family: $gotham
-						font-size: 14px
-						transition: color $tc-animation
-						font-weight: 300
-
-						&:hover
-							border-color: white
-
-						&.black
-							color: black
-
-							&:hover
-								border-color: black
-
-			.bottom-menu
-				bottom: 50px
-				left: 50px
-				right: 50px
-				position: fixed
-
-				a
-					color: white
-					font-family: $gotham
-					text-decoration: none
-					position: relative
-					transition: color .4s
-
-					&:after
-						position: absolute
-						background-color: white
-						height: 1px
-						left: 0
-						top: 50%
-						margin-top: -0.5px
-						width: 0
-						transition: width .4s
-						content: ""
-
-					&:hover
-						color: rgba(255, 255, 255, .3)
-
-						&:after
-							width: 100%
-
-					&.black
-						color: black
-
-						&:after
-							background-color: black
-
-						&:hover
-							color: rgba(0,0,0,.5)
-
-				.right
-					position: absolute
-					bottom: 0
-					right: 0
-					margin-right: 0px
-					transition: margin-right $menu-open-animation
-
-				.left
-					position: absolute
-					bottom: 0
-					left: 0
-					margin-left: 0px
-					transition: margin-left $menu-open-animation
-
-					a:first-child
-						margin-right: 15px
-
-		main
-			width: 100%
-			position: relative
-			display: flex
-			transform-origin: bottom
-			transition: transform $menu-open-animation
-
-			.ps__rail-x
-				display: none !important
-
-			section
-				background: white
-				height: 100%
-				display: flex
-				padding: 120px 0 120px $section-sides-margin
-				position: relative
-
-				&:not(#first-screen):not(#slider-two):after
-					position: absolute
-					height: 100%
-					top: 0
-					width: 2px
-					right: -1px
-					background: white
-					content: ""
-
-				.section-title-block
-					display: flex
-					justify-content: center
-					flex-direction: column
-					height: 100%
-
-					.tag
-						color: black
-						opacity: .3
-						font-weight: 600
-
-					.section-title
-						font-size: 48px
-						font-family: $gotham
-						line-height: 56px
-						font-weight: 700
-						color: black
-						margin-top: 20px
-						white-space: nowrap
-						margin-left: -2px
-
-				&#first-screen
-					display: block
-					min-width: 100%
-					max-width: 100%
-					padding: 0
-
-					.slider
-						.slide
-							.content
-								position: relative
-								height: unset
-								padding-top: 250px
-								color: white
-								z-index: 1
-
-								.slide-title
-									font-weight: 500
-									font-family: $gotham
-									font-size: 64px
-
-								.slide-desc
-									max-width: 620px
-									font-size: 24px
-									font-weight: 500
-									margin-top: 25px
-									line-height: 36px
-									margin-bottom: 0
-
-							&:after
-								content: ""
-								position: absolute
-								left: 0
-								bottom: 0
-								display: block
-								width: 100%
-								height: 100%
-								background: rgba(0,0,0,.6)
-
-				&#philosophy
-					.photo-block:nth-child(2)
-						align-self: flex-end
-						margin-left: 330px
-						align-items: flex-end
-
-						.photo-desc
-							margin-bottom: 60px
-
-					.photo-block:last-child
-						align-items: flex-end
-						align-self: flex-start
-						margin-left: 270px
-						margin-right: 270px
-
-						.photo-desc
-							margin-bottom: -30px
-
-				&#slider-two
-					padding: 0
-					width: 100vw
-					position: relative
-
-					.slider
-						width: 100%
-
-						.slide
-							&:after
-								content: ""
-								position: absolute
-								left: 0
-								bottom: 0
-								display: block
-								width: 100%
-								height: 100%
-								background: rgba(0,0,0,.3)
-
-				&#chief
-					padding-left: 270px
-
-					.photo-block
-						margin-bottom: -120px
-						margin-left: 300px
-						align-self: flex-end
-						align-items: center
-
-						.photo-desc
-							margin-bottom: -70px
-
-							span
-								display: block
-
-								&:last-child
-									margin-top: 15px
-
-					.wins
-						display: flex
-						align-self: flex-end
-						margin-left: 270px
-
-						.label
-							white-space: nowrap
-
-						.wins-list
-							margin-left: 100px
-
-							ul
-								list-style: none
-								padding-left: 0
-								margin-bottom: 0
-								max-width: 450px
-
-								li
-									margin-bottom: 25px
-									position: relative
-									display: flex
-									justify-content: space-between
-
-									.year
-										position: absolute
-										opacity: .3
-										font-size: 10px
-										right: 100%
-										margin-right: 15px
-										top: -5px
-
-							.photo
-								position: relative
-
-								.food
-									position: absolute
-									left: -200px
-									top: 50%
-									display: block
-									margin-top: -165px
-
-				&#party
-					padding-left: 270px
-
-					.photo-block
-						align-self: center
-						margin-left: 270px
-
-				&#enterprise
-					padding-left: 270px
-
-					.photo-block
-						padding-left: 270px
-
-						&.centered
-							align-self: center
-							margin-left: 360px
-							padding-left: 0
-							align-items: flex-end
-
-							.photo-desc
-								margin-bottom: 70px
-
-						&:nth-child(3), &:nth-child(5)
-							align-self: center
-
-						&:nth-child(4)
-							align-self: flex-end
-
-				&#menu
-					padding-left: 270px
-
-					.menu
-						margin-left: 250px
-						display: flex
-						flex-direction: column
-						align-items: flex-start
-						height: 100%
-
-						.categories
-							position: sticky
-							left: 50px
-							display: flex
-							padding: 50px 0
-
-							.category, .cat-label
-								white-space: nowrap
-
-							.cat-label
-								opacity: .3
-
-							.category
-								padding: 0 0 0 25px
-
-						.cards
-							height: 100%
-							display: flex
-
-							.card
-								background-color: #F7F7F7
-								padding: 30px
-								height: 100%
-								display: flex
-								flex-direction: column
-								justify-content: space-between
-
-								&:not(:last-child)
-									margin-right: 20px
-
-								.label
-									font-weight: 600
-									text-transform: uppercase
-
-								ul
-									padding-left: 0
-									list-style: none
-									margin-bottom: 0
-
-								.items
-									.item
-										display: flex
-										justify-content: space-between
-
-										&:not(:last-child)
-											margin-bottom: 15px
-
-										.item-title
-											width: 333px
-											text-transform: uppercase
-
-										.price
-											margin-left: 30px
-											white-space: nowrap
-
-				&#press
-					padding-left: 270px
-					align-items: center
-
-					.press
-						display: flex
-						margin-left: 250px
-						align-items: flex-start
-
-						.press-item
-							img
-								margin-top: 105px
-								margin-bottom: 85px
-								display: block
-
-							&:not(:last-child)
-								margin-right: 145px
-
-							.press-text
-								font-weight: 600
-
-							.date
-								opacity: .3
-								font-weight: 300
-
-				&#contacts
-					padding-left: 270px
-					padding-right: 270px
-
-					.section-title-block
-						margin-right: 250px
-
-					.map
-						align-items: center
-						display: flex
-
-						.contacts
-							list-style: none
-							padding-left: 0
-							margin-bottom: 0
-							margin-left: 140px
-
-							li
-								display: flex
-
-								&:not(:last-child)
-									margin-bottom: 25px
-
-								.value, .label
-									white-space: nowrap
-
-								.value
-									color: black
-
-								.label
-									min-width: 109px
-									font-weight: 600
-
-						iframe
-							height: 100%
-
-				&#contacts-add
-					padding: 0 127px
-					background-color: black
-					display: flex
-					align-items: center
-
-					.content
-						.gray
-							color: white
-							opacity: .5
-
-						a, button
-							white-space: nowrap
-							color: white
-							text-decoration: none
-							display: inline-block
-
-							&:after
-								content: ""
-								display: block
-								left: 0
-								background-color: #fff
-								width: 100%
-								height: 1px
-								bottom: -5px
-
-						.logo
-							display: flex
-							flex-direction: column
-							align-items: center
-
-							svg
-								*
-									fill: white
-
-							.bottom-logo
-								margin-top: 15px
-								color: #636363
-								display: flex
-								align-items: center
-
-								span
-									margin-left: 15px
-									margin-right: 15px
-									font-size: 12px
-
-								&:after, &:before
-									content: ""
-									background-color: #636363
-									height: 1px
-									width: 40px
-									display: block
-
-						.contacts
-							margin-top: 150px
-							display: flex
-							flex-direction: column
-							align-items: flex-start
-
-							a
-								margin-top: 10px
-
-						.copy
-							margin-top: 70px
-
-							span
-								display: block
-								margin-bottom: 37px
-
-							button:last-child
-								margin-top: 10px
-
-					&:after
-						display: none
-
-		&.menu-opened
-			>.open-menu
-				margin-top: 125px
-
-			.nav
-				top: 0
-				background-color: rgba(0,0,0,.2)
-				transition: background-color $menu-open-animation, top .00001s
-
-				.left
-					left: 0
-
-				.right
-					right: 0
-
-				.content
-					top: 0
-
-			header
-				.top-menu
-					padding: 125px 100px 0 100px
-
-				.bottom-menu
-					.left
-						margin-left: 100px
-
-					.right
-						margin-right: 100px
+    body
+        font-size: $main-font
+        min-width: 320px
+        position: relative
+        line-height: 1.65
+        font-family: 'Roboto', sans-serif
+        overflow-x: hidden
+        color: $text
+        background-color: #000000
+        letter-spacing: 0.05em
+
+        .slider
+            height: 100%
+
+            *
+                height: 100%
+
+            .slide
+                position: relative
+                background-size: cover
+                background-position: center center
+                background-repeat: no-repeat
+                display: flex
+                padding-left: $section-sides-margin
+                align-items: center
+                justify-content: flex-start
+                width: 100vw
+
+        .photo-block
+            display: flex
+            align-self: flex-start
+
+            .photo-wrapper
+                position: relative
+
+                .num
+                    left: -25px
+                    font-weight: 700
+                    color: black
+                    bottom: 2px
+                    position: absolute
+                    transform: rotate(90deg) scale(-1)
+                    display: block
+
+            .photo-desc
+                min-width: 360px
+                font-weight: 300
+                margin-left: 140px
+                font-size: 14px
+
+                button
+                    border: 1px solid black
+                    padding: 13px 30px
+                    font-family: $gotham
+                    font-weight: 300
+
+                p
+                    margin-bottom: 0
+
+                span
+                    display: block
+
+                    &:not(:first-child)
+                        margin-top: 15px
+
+            &.with-button
+                align-items: flex-end
+
+                .photo-desc
+                    button
+                        margin-top: 80px
+
+                &.with-label
+                    align-items: stretch
+
+                    .photo-desc
+                        align-items: flex-start
+                        display: flex
+                        flex-direction: column
+                        justify-content: space-between
+
+                        .label
+                            font-size: 16px
+                            font-weight: 600
+
+                        button
+                            margin-top: 0
+
+        .slick-dots
+            position: absolute
+            left: 0
+            right: 0
+            display: flex
+            justify-content: center
+            bottom: 50px
+            list-style: none
+            padding-left: 0
+            margin-bottom: 0
+
+            li
+                display: flex
+                position: relative
+                height: 16px
+                width: 16px
+                cursor: pointer
+                transform: rotate(-90deg)
+
+                .circle
+                    stroke-dasharray: 50.4
+                    stroke-dashoffset: 50.4
+
+                &:not(:last-child)
+                    margin-right: 40px
+
+                &:before
+                    position: absolute
+                    content: ""
+                    display: block
+                    background: rgba(255, 255, 255, .2)
+                    height: 5px
+                    width: 5px
+                    border-radius: 50%
+                    margin-left: 5.5px
+                    margin-top: 5.5px
+
+                button
+                    display: none
+
+                &.slick-active
+                    &:before
+                        background: white
+
+                    .circle
+                        animation: dash 4s linear forwards
+
+        > .open-menu
+            position: fixed
+            z-index: 21
+            top: 50px
+            left: 50%
+            margin-left: -17px
+            margin-top: 0
+            transition: margin-top $menu-open-animation
+
+        .open-menu
+            rect
+                fill: white
+                transition: fill $tc-animation
+
+            &.black
+                rect
+                    fill: black
+
+        .nav
+            position: fixed
+            left: 0
+            width: 100%
+            height: 100%
+            top: -100%
+            background-color: rgba(0, 0, 0, 0)
+            transition: background-color $menu-open-animation, top .00001s $menu-open-animation
+            z-index: 20
+
+            .content
+                height: 125px
+                top: -125px
+                width: 100%
+                position: absolute
+                background-color: black
+                z-index: 21
+                left: 0
+                transition: top $menu-open-animation
+                padding: 0 100px
+
+                ul
+                    height: 100%
+                    padding-left: 0
+                    list-style: none
+                    margin-bottom: 0
+                    display: flex
+                    align-items: center
+                    justify-content: space-between
+                    font-family: $gotham
+                    font-size: 16px
+                    letter-spacing: 0.05em
+                    font-weight: 200
+
+                    a
+                        color: white
+                        text-decoration: none
+
+            .left, .right
+                top: 0
+                height: 100%
+                width: 100px
+                background-color: black
+                position: absolute
+
+            .left
+                left: -100px
+                transition: left .5s
+
+            .right
+                right: -100px
+                transition: right .5s
+
+        header
+            position: fixed
+            z-index: 12
+            font-weight: 300
+            letter-spacing: 0.1em
+
+            .top-menu
+                position: fixed
+                top: 50px
+                left: 50px
+                right: 50px
+                display: flex
+                justify-content: space-between
+                align-items: flex-start
+                padding: 0px
+                transition: padding $menu-open-animation
+                height: 0
+
+                .open-menu
+                    display: none
+
+                .logo
+                    display: block
+
+                    svg
+                        *
+                            fill: white
+                            transition: fill $tc-animation
+
+                    &.black
+                        svg
+                            *
+                                fill: black
+
+                .right
+                    position: relative
+                    top: -8px
+
+                    button, a
+                        border: 1px solid transparent
+                        padding: 13px 30px
+                        color: white
+                        font-family: $gotham
+                        font-size: 14px
+                        transition: color $tc-animation
+                        font-weight: 300
+
+                        svg
+                            width: 18px
+                            height: 18px
+
+                            *
+                                fill: white
+                                transition: fill $menu-open-animation
+
+                        &:hover
+                            border-color: white
+
+                        &.black
+                            color: black
+
+                            svg
+                                *
+                                    fill: black
+
+                            &:hover
+                                border-color: black
+
+                    a
+                        display: none
+                        padding: 13px
+                        border-color: white
+
+                        &.black
+                            border-color: black
+
+            .bottom-menu
+                bottom: 50px
+                left: 50px
+                right: 50px
+                position: fixed
+
+                a
+                    color: white
+                    font-family: $gotham
+                    text-decoration: none
+                    position: relative
+                    transition: color .4s
+
+                    &:after
+                        position: absolute
+                        background-color: white
+                        height: 1px
+                        left: 0
+                        top: 50%
+                        margin-top: -0.5px
+                        width: 0
+                        transition: width .4s
+                        content: ""
+
+                    &:hover
+                        color: rgba(255, 255, 255, .3)
+
+                        &:after
+                            width: 100%
+
+                    &.black
+                        color: black
+
+                        &:after
+                            background-color: black
+
+                        &:hover
+                            color: rgba(0, 0, 0, .5)
+
+                .right
+                    position: absolute
+                    bottom: 0
+                    right: 0
+                    margin-right: 0px
+                    transition: margin-right $menu-open-animation
+
+                .left
+                    position: absolute
+                    bottom: 0
+                    left: 0
+                    margin-left: 0px
+                    transition: margin-left $menu-open-animation
+
+                    a:first-child
+                        margin-right: 15px
+
+        main
+            width: 100%
+            position: relative
+            display: flex
+            transform-origin: bottom
+            transition: transform $menu-open-animation
+
+            .ps__rail-x
+                display: none !important
+
+            section
+                background: white
+                height: 100%
+                display: flex
+                padding: 120px 0 120px $section-sides-margin
+                position: relative
+
+                &:not(#first-screen):not(#slider-two):after
+                    position: absolute
+                    height: 100%
+                    top: 0
+                    width: 2px
+                    right: -1px
+                    background: white
+                    content: ""
+
+                .section-title-block
+                    display: flex
+                    justify-content: center
+                    flex-direction: column
+                    height: 100%
+
+                    .tag
+                        color: black
+                        opacity: .3
+                        font-weight: 600
+
+                    .section-title
+                        font-size: 48px
+                        font-family: $gotham
+                        line-height: 56px
+                        font-weight: 700
+                        color: black
+                        margin-top: 20px
+                        white-space: nowrap
+                        margin-left: -2px
+
+                &#first-screen
+                    display: block
+                    min-width: 100%
+                    max-width: 100%
+                    padding: 0
+
+                    .slider
+                        .slide
+                            .content
+                                position: relative
+                                height: unset
+                                padding-top: 250px
+                                color: white
+                                z-index: 1
+
+                                .swipe-to-next
+                                    display: none
+
+                                    .mob
+                                        display: none
+
+                                .slide-title
+                                    font-weight: 500
+                                    font-family: $gotham
+                                    font-size: 64px
+
+                                .slide-desc
+                                    max-width: 620px
+                                    font-size: 24px
+                                    font-weight: 500
+                                    margin-top: 25px
+                                    line-height: 36px
+                                    margin-bottom: 0
+
+                            &:after
+                                content: ""
+                                position: absolute
+                                left: 0
+                                bottom: 0
+                                display: block
+                                width: 100%
+                                height: 100%
+                                background: rgba(0, 0, 0, .6)
+
+                &#philosophy
+                    .photo-block:nth-child(2)
+                        align-self: flex-end
+                        margin-left: 330px
+                        align-items: flex-end
+
+                        .photo-desc
+                            margin-bottom: 60px
+
+                    .photo-block:last-child
+                        align-items: flex-end
+                        align-self: flex-start
+                        margin-left: 270px
+                        margin-right: 270px
+
+                        .photo-desc
+                            margin-bottom: -30px
+
+                &#slider-two
+                    padding: 0
+                    width: 100vw
+                    position: relative
+
+                    .slider
+                        width: 100%
+
+                        .slide
+                            &:after
+                                content: ""
+                                position: absolute
+                                left: 0
+                                bottom: 0
+                                display: block
+                                width: 100%
+                                height: 100%
+                                background: rgba(0, 0, 0, .3)
+
+                &#chief
+                    padding-left: 270px
+
+                    .photo-block
+                        margin-bottom: -120px
+                        margin-left: 300px
+                        align-self: flex-end
+                        align-items: center
+
+                        .photo-desc
+                            margin-bottom: -70px
+
+                            span
+                                display: block
+
+                                &:last-child
+                                    margin-top: 15px
+
+                    .wins
+                        display: flex
+                        align-self: flex-end
+                        margin-left: 270px
+
+                        .label
+                            white-space: nowrap
+
+                        .wins-list
+                            margin-left: 100px
+
+                            ul
+                                list-style: none
+                                padding-left: 0
+                                margin-bottom: 0
+                                max-width: 450px
+
+                                li
+                                    margin-bottom: 25px
+                                    position: relative
+                                    display: flex
+                                    justify-content: space-between
+
+                                    .year
+                                        position: absolute
+                                        opacity: .3
+                                        font-size: 10px
+                                        right: 100%
+                                        margin-right: 15px
+                                        top: -5px
+
+                            .photo
+                                position: relative
+
+                                .food
+                                    position: absolute
+                                    left: -200px
+                                    top: 50%
+                                    display: block
+                                    margin-top: -165px
+
+                &#party
+                    padding-left: 270px
+
+                    .photo-block
+                        align-self: center
+                        margin-left: 270px
+
+                &#enterprise
+                    padding-left: 270px
+
+                    .photo-block
+                        padding-left: 270px
+
+                        &.centered
+                            align-self: center
+                            margin-left: 360px
+                            padding-left: 0
+                            align-items: flex-end
+
+                            .photo-desc
+                                margin-bottom: 70px
+
+                        &:nth-child(3), &:nth-child(5)
+                            align-self: center
+
+                        &:nth-child(4)
+                            align-self: flex-end
+
+                &#menu
+                    padding-left: 270px
+
+                    .menu
+                        margin-left: 250px
+                        display: flex
+                        flex-direction: column
+                        align-items: flex-start
+                        height: 100%
+
+                        .categories
+                            position: sticky
+                            left: 50px
+                            display: flex
+                            padding: 50px 0
+
+                            .category, .cat-label
+                                white-space: nowrap
+
+                            .cat-label
+                                opacity: .3
+
+                            .category
+                                padding: 0 0 0 25px
+
+                        .cards
+                            height: 100%
+                            display: flex
+
+                            .card
+                                background-color: #F7F7F7
+                                padding: 30px
+                                height: 100%
+                                display: flex
+                                flex-direction: column
+                                justify-content: space-between
+
+                                &:not(:last-child)
+                                    margin-right: 20px
+
+                                .label
+                                    font-weight: 600
+                                    text-transform: uppercase
+
+                                ul
+                                    padding-left: 0
+                                    list-style: none
+                                    margin-bottom: 0
+
+                                .items
+                                    .item
+                                        display: flex
+                                        justify-content: space-between
+
+                                        &:not(:last-child)
+                                            margin-bottom: 15px
+
+                                        .item-title
+                                            width: 333px
+                                            text-transform: uppercase
+
+                                        .price
+                                            margin-left: 30px
+                                            white-space: nowrap
+
+                &#press
+                    padding-left: 270px
+                    align-items: center
+
+                    .press
+                        display: flex
+                        margin-left: 250px
+                        align-items: flex-start
+
+                        .press-item
+                            img
+                                margin-top: 105px
+                                margin-bottom: 85px
+                                display: block
+
+                            &:not(:last-child)
+                                margin-right: 145px
+
+                            .press-text
+                                font-weight: 600
+
+                            .date
+                                opacity: .3
+                                font-weight: 300
+
+                &#contacts
+                    padding-left: 270px
+                    padding-right: 270px
+
+                    .section-title-block
+                        margin-right: 250px
+
+                    .map
+                        align-items: center
+                        display: flex
+
+                        .contacts
+                            list-style: none
+                            padding-left: 0
+                            margin-bottom: 0
+                            margin-left: 140px
+
+                            li
+                                display: flex
+
+                                &:not(:last-child)
+                                    margin-bottom: 25px
+
+                                .value, .label
+                                    white-space: nowrap
+
+                                .value
+                                    color: black
+
+                                .label
+                                    min-width: 109px
+                                    font-weight: 600
+
+                        iframe
+                            width: 617px
+                            height: 100%
+
+                &#contacts-add
+                    padding: 0 127px
+                    background-color: black
+                    display: flex
+                    align-items: center
+
+                    .content
+                        .gray
+                            color: white
+                            opacity: .5
+
+                        a, button
+                            white-space: nowrap
+                            color: white
+                            text-decoration: none
+                            display: inline-block
+
+                            &:after
+                                content: ""
+                                display: block
+                                left: 0
+                                background-color: #fff
+                                width: 100%
+                                height: 1px
+                                bottom: -5px
+
+                        .logo
+                            display: flex
+                            flex-direction: column
+                            align-items: center
+
+                            svg
+                                *
+                                    fill: white
+
+                            .bottom-logo
+                                margin-top: 15px
+                                color: #636363
+                                display: flex
+                                align-items: center
+
+                                span
+                                    margin-left: 15px
+                                    margin-right: 15px
+                                    font-size: 12px
+
+                                &:after, &:before
+                                    content: ""
+                                    background-color: #636363
+                                    height: 1px
+                                    width: 40px
+                                    display: block
+
+                        .contacts
+                            margin-top: 150px
+                            display: flex
+                            flex-direction: column
+                            align-items: flex-start
+
+                            a
+                                margin-top: 10px
+
+                        .copy
+                            margin-top: 70px
+
+                            span
+                                display: block
+                                margin-bottom: 37px
+
+                            button:last-child
+                                margin-top: 10px
+
+                    &:after
+                        display: none
+
+        &.menu-opened
+            > .open-menu
+                margin-top: 125px
+
+            .nav
+                top: 0
+                background-color: rgba(0, 0, 0, .2)
+                transition: background-color $menu-open-animation, top .00001s
+
+                .left
+                    left: 0
+
+                .right
+                    right: 0
+
+                .content
+                    top: 0
+
+            header
+                .top-menu
+                    padding: 125px 100px 0 100px
+
+                .bottom-menu
+                    .left
+                        margin-left: 100px
+
+                    .right
+                        margin-right: 100px
 
 @import media

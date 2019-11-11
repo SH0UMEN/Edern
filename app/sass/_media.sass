@@ -137,3 +137,341 @@
 
                         .right
                             margin-right: 63px
+
+@media screen and (max-width: 1020px)
+    html
+        body
+            main
+                section
+                    &#first-screen
+                        .slider
+                            .slide
+                                justify-content: center
+                                padding-left: 0
+
+                                .content
+                                    padding-top: 130px
+                                    text-align: center
+
+                                    .slide-title
+                                        font-size: 48px
+
+                                    .slide-desc
+                                        margin-left: auto
+                                        margin-right: auto
+
+                                    .swipe-to-next
+                                        display: flex
+                                        color: white
+                                        align-items: center
+                                        font-size: 10px
+                                        height: 14.5px
+                                        margin-left: auto
+                                        margin-right: auto
+                                        margin-top: 30px
+
+                                        img
+                                            margin-left: 12px
+
+@media screen and (max-width: 880px), screen and (orientation: portrait)
+    html
+        body
+            header
+                .top-menu
+                    .right
+                        display: flex
+                        align-items: flex-start
+
+                        button:nth-child(2)
+                            display: none
+
+                        button
+                            line-height: 18px
+
+                        a
+                            display: inline-flex
+            main
+                transition: none
+                transform: scale(1) !important
+
+
+@media screen and (max-width: 640px)
+    html
+        body
+            background-color: #fff
+            overflow-x: hidden
+
+            >.open-menu
+                display: none
+
+            .nav
+                transition: none !important
+                .left, .right
+                    display: none
+
+                .content
+                    transition: none !important
+                    height: 100%
+
+            header
+                .bottom-menu
+                    display: none
+
+                .top-menu
+                    left: 25px
+                    right: 25px
+                    top: 30px
+
+                    .open-menu
+                        display: block
+
+                        svg
+                            width: 24px
+
+                    .logo
+                        a
+                            svg
+                                width: 94px
+
+                    .right
+                        top: 0
+
+                        button:first-child
+                            display: none
+
+                        a
+                            border-color: transparent !important
+                            padding: 0
+
+                            svg
+                                width: 22px
+                                height: 22px
+            main
+                overflow-y: scroll
+                display: block
+
+                section
+                    width: 100%
+                    display: block
+                    height: auto
+                    padding: 190px 25px 120px
+
+                    .photo-block
+                        margin-top: 120px
+                        margin-left: 0 !important
+                        margin-right: 0 !important
+                        display: block
+
+                        .photo-wrapper
+                            .photo
+                                img
+                                    width: 100%
+                                    height: auto
+
+                        &.with-button
+                            .photo-desc
+                                button
+                                    margin-top: 40px
+                                    width: 100%
+
+                            &.with-label
+                                .photo-desc
+                                    .label
+                                        margin-bottom: 40px
+
+                                    button
+                                        margin-top: 40px
+
+                        .photo-desc
+                            margin-bottom: 0 !important
+                            margin-top: 40px
+                            margin-left: 0
+                            width: 100%
+                            min-width: 100%
+
+                    .section-title-block
+                        .tag
+                            font-size: 11px
+
+                        .section-title
+                            font-size: 24px
+                            line-height: 32px
+
+                    &#first-screen
+                        height: 100%
+
+                        .slick-dots
+                            display: none
+
+                        .slider
+                            .slide
+                                padding-left: 25px
+                                padding-right: 25px
+
+                                .content
+                                    .slide-title
+                                        font-size: 28px
+
+                                    .slide-desc
+                                        font-size: 14px
+                                        line-height: 24px
+
+                                    .swipe-to-next
+                                        flex-direction: column
+
+                                        .desc
+                                            display: none
+
+                                        .mob
+                                            display: block
+
+                                        img
+                                            margin-top: 10px
+                                            transform: rotate(90deg)
+                                            width: 19px
+                                            height: 14.5px
+                                            margin-left: 0
+
+                    &#slider-two
+                        height: 100%
+
+                    &#chief, &#enterprise, &#party, &#menu, &#press, &#contacts
+                        padding-left: 25px
+                        padding-top: 0
+
+                    &#chief
+                        padding-top: 120px
+                        overflow-x: hidden
+
+                        .photo-block
+                            margin-bottom: 0
+
+                            .photo-wrapper
+                                .photo
+                                    img
+                                        max-width: 100%
+
+                        .wins
+                            margin-left: 0
+                            display: block
+                            margin-top: 80px
+
+                            .wins-list
+                                margin-top: 45px
+                                margin-left: 85px
+
+                                ul
+                                    max-width: unset
+
+                                    li
+                                        flex-direction: column
+
+                                        span
+                                            &:last-child
+                                                margin-top: 10px
+                                                opacity: .3
+
+                                .photo
+                                    img
+                                        max-height: 260px
+
+                                    img.food
+                                        max-width: 195px
+                                        left: -106px
+                                        margin-top: -86px
+
+                            .label
+                                margin-left: 85px
+                                font-weight: 600
+
+                    &#enterprise
+                        .photo-block
+                            padding-left: 0
+
+                    &#menu
+                        padding-left: 25px
+
+                        .menu
+                            margin-left: 0
+                            align-items: stretch
+                            margin-top: 120px
+
+                            .categories
+                                margin-left: -25px
+                                margin-right: -25px
+                                padding-left: 25px
+                                position: relative
+                                left: 0
+                                padding-top: 0
+                                padding-bottom: 0
+                                margin-bottom: 40px
+
+                                .cat-label
+                                    display: none
+
+                                .category:nth-child(2)
+                                    padding-left: 0
+
+                            .cards
+                                display: block
+
+                                .card
+                                    padding: 25px
+                                    width: 100%
+                                    margin-left: 0
+
+                                    &:not(:last-child)
+                                        margin-bottom: 20px
+
+                                    .label
+                                        margin-bottom: 40px
+
+                                    .items
+                                        .item
+                                            .price
+                                                font-weight: 600
+
+                    &#press
+                        .press
+                            margin-left: 0
+                            display: block
+                            margin-top: 120px
+
+                            .press-item
+                                margin-right: 0
+
+                                &:not(:last-child)
+                                    margin-bottom: 80px
+                                    margin-right: 0
+
+                                img
+                                    max-width: 100%
+                                    margin-top: 40px
+                                    margin-bottom: 28px
+
+                    &#contacts
+                        padding-right: 25px
+
+                        .map
+                            margin-top: 120px
+                            display: block
+
+                            iframe
+                                width: 100%
+                                height: 400px
+
+                            .contacts
+                                margin-left: 0
+                                margin-top: 40px
+
+                                li
+                                    flex-direction: column
+
+                    &#contacts-add
+                        padding: 80px 25px 40px
+
+                        .content
+                            text-align: center
+
+                            .contacts
+                                align-items: center

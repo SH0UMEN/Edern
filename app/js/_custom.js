@@ -95,6 +95,7 @@ $(document).ready(function () {
     //Open menu animation
     $(".nav li a").on('click', toggleMenu);
     $(".open-menu").on("click", toggleMenu);
+    $(".mob-nav a").on("click", toggleMenu);
 
     //Scroll
     let tChanging = $(".theme-changing");

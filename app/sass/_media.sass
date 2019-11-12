@@ -205,13 +205,7 @@
                 display: none
 
             .nav
-                transition: none !important
-                .left, .right
-                    display: none
-
-                .content
-                    transition: none !important
-                    height: 100%
+                display: none
 
             header
                 .bottom-menu
@@ -248,6 +242,7 @@
                                 height: 22px
             main
                 overflow-y: scroll
+                overflow-x: hidden
                 display: block
 
                 section
@@ -301,7 +296,7 @@
                         height: 100%
 
                         .slick-dots
-                            display: none
+                            display: none !important
 
                         .slider
                             .slide
@@ -309,6 +304,9 @@
                                 padding-right: 25px
 
                                 .content
+                                    padding-top: 40px
+                                    position: static
+
                                     .slide-title
                                         font-size: 28px
 
@@ -317,6 +315,10 @@
                                         line-height: 24px
 
                                     .swipe-to-next
+                                        position: absolute
+                                        bottom: 50px
+                                        margin-left: -18px
+                                        left: 50%
                                         flex-direction: column
 
                                         .desc
@@ -475,3 +477,30 @@
 
                             .contacts
                                 align-items: center
+
+            &.menu-opened
+                header
+                    .mob-nav
+                        top: 0
+                        display: flex
+
+                    .top-menu
+                        padding: 0
+
+                        .open-menu
+                            svg
+                                display: none
+
+                            .mob-opened
+                                display: inline-block
+
+                        .logo
+                            svg
+                                *
+                                    fill: white
+
+                        .right
+                            a.black
+                                svg
+                                    *
+                                        fill: white

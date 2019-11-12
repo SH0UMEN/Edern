@@ -243,6 +243,49 @@ html
             font-weight: 300
             letter-spacing: 0.1em
 
+            .mob-nav
+                height: 100%
+                width: 100%
+                position: fixed
+                left: 0
+                background-color: black
+                font-family: $gotham
+                display: none
+                flex-direction: column
+                justify-content: space-between
+                padding: 110px 25px 25px
+                top: -100%
+
+                .btns
+                    button
+                        border: 1px solid white
+                        width: 100%
+                        display: block
+                        color: white
+                        padding: 15px 0
+
+                        &:first-child
+                            padding: 0
+                            border: none
+                            margin-bottom: 20px
+
+                ul
+                    list-style: none
+                    padding-left: 0
+                    margin-bottom: 0
+
+                    li
+                        text-align: center
+
+                        &:not(:last-child)
+                            margin-bottom: 15px
+
+                        a
+                            font-weight: 500
+                            text-transform: capitalize
+                            font-size: 18px
+                            color: white
+
             .top-menu
                 position: fixed
                 top: 50px
@@ -257,6 +300,10 @@ html
 
                 .open-menu
                     display: none
+
+                    .mob-opened
+                        display: none
+                        width: 24px
 
                 .logo
                     display: block

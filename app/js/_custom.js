@@ -17,6 +17,10 @@ $(document).ready(function () {
         }
     }
 
+    function openPopup(id) {
+        $('#'+id).addClass('shown');
+    }
+
     function reinitPS() {
         if(vertical) {
             if(mainScroll) {
@@ -77,6 +81,8 @@ $(document).ready(function () {
         draggable: false,
         swipe: false
     });
+
+    $(".map iframe").attr("src", "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d862.007839245216!2d2.2975583802191553!3d48.87397606029203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fea4ba8872f%3A0xe9b7b4b4f4024772!2zNiBSdWUgQXJzw6huZSBIb3Vzc2F5ZSwgNzUwMDggUGFyaXMsINCk0YDQsNC90YbQuNGP!5e0!3m2!1sru!2sru!4v1573306475072!5m2!1sru!2sru");
 
     $(".slick-dots li").append('<svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0 0 17 17"><g stroke-width="1"><circle class="circle" cx="8.5" cy="8.5" r="8" fill="none" stroke="#ffffff" /></g></svg>');
 
@@ -178,5 +184,27 @@ $(document).ready(function () {
 
     $(links).on("click", function () {
         prevScroll = $(main).scrollLeft();
+    });
+
+    $('button.reservation').on('click', function () {
+       openPopup('reservation');
+    });
+
+    $('.popup .close-popup').on('click', function () {
+        $(this).parent('.popup').removeClass('shown');
+    });
+
+    $('.popup form input, .popup form textarea').on('focus', function () {
+        $(this).parent().addClass('triggered');
+    });
+
+    $('.popup form input, .popup form textarea').on('blur', function () {
+        if($(this).val().length == 0) {
+            $(this).parent().removeClass('triggered');
+        }
+    });
+    
+    $("button.cert").on('click', function() {
+       openPopup('cert');
     });
 });

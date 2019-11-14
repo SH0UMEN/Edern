@@ -1,0 +1,256 @@
+@import vars
+
+.popup
+    width: 100%
+    height: 100%
+    background-color: black
+    position: fixed
+    top: -100%
+    left: 0
+    z-index: 100
+    padding: 120px 50px
+    overflow: hidden
+
+    .close-popup
+        position: absolute
+        top: 45px
+        left: 50%
+        margin-left: -10px
+        display: block
+
+        svg
+            width: 20px
+            height: 20px
+
+    .content
+        max-width: 1500px
+        height: 100%
+        display: flex
+        justify-content: center
+        margin-left: auto
+        margin-right: auto
+
+        .frame
+            height: 100%
+            background-size: cover
+            background-repeat: no-repeat
+            background-position: center center
+            width: 50%
+
+        form
+            color: white
+            padding-left: 150px
+            padding-right: 150px
+            width: 50%
+            display: flex
+            flex-direction: column
+
+            .desc
+                margin-top: 40px
+                opacity: .5
+
+            .form
+                height: 100%
+                display: flex
+                flex-direction: column
+                justify-content: space-between
+
+                .bottom
+                    display: flex
+                    flex-direction: column
+                    align-items: flex-start
+
+                    .accept
+                        display: flex
+                        align-items: flex-start
+                        margin-bottom: 30px
+
+                        .custom-checkbox
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            min-width: 16px
+                            height: 16px
+                            background-color: #fff
+                            margin-top: 5px
+                            margin-right: 8px
+
+                            svg
+                                display: none
+
+                        input
+                            display: inline-block
+                            height: 0
+                            width: 0
+                            visibility: hidden
+
+                            &:checked+.custom-checkbox
+                                svg
+                                    display: inline-block
+
+                    button
+                        font-family: $gotham
+                        color: white
+                        padding: 15px 30px
+                        border: 1px solid white
+                        letter-spacing: .1em
+
+                .fields
+                    display: flex
+                    flex-wrap: wrap
+                    margin-left: -15px
+                    margin-right: -15px
+
+                    .field
+                        margin-top: 30px
+                        width: 100%
+                        padding: 0 15px
+                        position: relative
+
+                        &.half
+                            width: 50%
+
+                        .placeholder
+                            position: absolute
+                            left: 35px
+                            top: 17px
+                            z-index: -1
+                            opacity: .3
+                            transform: scale(1)
+                            transition: transform .3s, top .3s
+                            transform-origin: left
+
+                        input, textarea
+                            resize: none
+                            width: 100%
+                            display: inline-block
+                            background-color: transparent
+                            border: 1px solid #4C4C4C
+                            color: white
+                            padding: 23px 20px 9px
+
+                        &.triggered
+                            .placeholder
+                                transform: scale(.75)
+                                top: 3px
+
+    &.shown
+        top: 0
+
+    &#reservation
+        .content
+            .frame
+                background-image: url("../img/reservation.png")
+
+    &#cert
+        .content
+            .frame
+                background-color: #212121
+                display: flex
+                align-items: center
+                justify-content: center
+
+                .certificate
+                    transform: scale(.5)
+
+            form
+                justify-content: center
+
+                .form
+                    height: auto
+
+                    .bottom
+                        margin-top: 120px
+
+@media screen and (max-height: 1000px)
+    .popup
+        padding: 80px 50px
+
+        .close-popup
+            top: 27px
+
+        .content
+            form
+                padding-left: 45px
+                padding-right: 45px
+
+                .desc
+                    margin-top: 20px
+
+                .form
+                    .fields
+                        .field
+                            margin-top: 20px
+
+                    .bottom
+                        align-items: center
+                        flex-direction: row
+
+                        .accept
+                            order: 2
+                            margin-bottom: 0
+
+                        button
+                            order: 1
+                            margin-right: 25px
+
+@media screen and (max-height: 740px), screen and (max-width: 1024px)
+    .popup
+        overflow-y: scroll
+
+        &::-webkit-scrollbar
+            display: none
+
+        .content
+            max-width: 750px
+
+            .frame
+                display: none !important
+
+            form
+                width: 100%
+
+                .form
+                    .bottom
+                        margin-top: 30px
+                        height: 100%
+                        justify-content: space-between
+
+@media screen and (max-width: 805px)
+    .popup
+        padding-left: 25px
+        padding-right: 25px
+        padding-bottom: 0
+
+        .content
+            max-width: unset
+
+            form
+                padding-left: 0
+                padding-right: 0
+
+                .form
+                    .bottom
+                        align-items: flex-start
+                        flex-direction: column
+                        padding-bottom: 25px
+
+                        .accept
+                            order: 1
+
+                        button
+                            order: 2
+                            width: 100%
+
+@media screen and (max-width: 520px)
+    .popup
+        .content
+            form
+                .form
+                    .fields
+                        .field.half
+                            width: 100%
+
+                    .bottom
+                        button
+                            margin-top: 27px

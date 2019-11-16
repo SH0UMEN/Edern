@@ -31,7 +31,6 @@ gulp.task('styles', function() {
 		outputStyle: 'expanded',
 		includePaths: [__dirname + '/node_modules']
 	}))
-	.pipe(concat('styles.min.css'))
 	.pipe(autoprefixer({
 		grid: true,
 		overrideBrowserslist: ['last 10 versions']
@@ -47,13 +46,23 @@ gulp.task('scripts', function() {
         'app/libs/jquery/dist/jquery.min.js',
         'app/libs/perfect-scrollbar/perfect-scrollbar.min.js',
         'app/libs/slick/slick.min.js',
+		'app/libs/validate/jquery.validate.min.js',
 		'app/js/_libs.js', // JS libraries (all in one)
-		'app/js/_custom.js', // Custom scripts. Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify()) // Minify js (opt.)
 	.pipe(gulp.dest('app/js'))
 	.pipe(browserSync.reload({ stream: true }))
+});
+
+gulp.task('page-scripts', function () {
+	return gulp.src([
+		'app/js/index.js',
+		'app/js/privacy.js'
+	])
+		.pipe(uglify())
+		.pipe(gulp.dest('app/js/dist/'))
+		.pipe(browserSync.reload({ stream: true }))
 });
 
 // Responsive Images
@@ -110,9 +119,10 @@ gulp.task('rsync', function() {
 
 gulp.task('watch', function() {
 	gulp.watch('app/sass/**/*.sass', gulp.parallel('styles'));
-	gulp.watch(['app/js/_custom.js', 'app/js/_libs.js'], gulp.parallel('scripts'));
+	gulp.watch(['app/js/_libs.js'], gulp.parallel('scripts'));
+	gulp.watch(['app/js/index.js', 'app/js/privacy.js'], gulp.parallel('page-scripts'));
 	gulp.watch('app/*.html', gulp.parallel('code'));
 	gulp.watch('app/img/_src/**/*', gulp.parallel('img'));
 });
 
-gulp.task('default', gulp.parallel('img', 'styles', 'scripts', 'browser-sync', 'watch'));
+gulp.task('default', gulp.parallel('img', 'styles', 'scripts', 'page-scripts', 'browser-sync', 'watch'));

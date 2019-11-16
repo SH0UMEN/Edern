@@ -1,0 +1,67 @@
+html
+    body
+        main
+            section
+                &#privacy
+                    padding-right: 270px
+
+                    .priv-items
+                        align-self: flex-end
+                        display: flex
+                        align-items: flex-start
+
+                        .priv-item
+                            margin-left: 270px
+                            display: flex
+                            flex-direction: column
+                            justify-content: flex-end
+
+                            .title
+                                font-weight: 600
+
+                            .cols
+                                margin-top: 100px
+                                display: flex
+
+                                .col
+                                    font-weight: 300
+                                    min-width: 362px
+
+                                    a
+                                        font-weight: 500
+                                        color: black
+                                        text-decoration: underline
+
+                                    b
+                                        font-weight: 600
+
+                                    &:not(:first-child)
+                                        margin-left: 20px
+
+@media screen and (max-width: 640px)
+    html
+        body
+            main
+                section
+                    &#privacy
+                        padding-right: 25px
+                        padding-left: 25px
+
+                        .priv-items
+                            display: block
+
+                            .priv-item
+                                display: block
+                                margin-left: 0
+                                margin-top: 120px
+
+                                .cols
+                                    display: block
+
+                                    .col
+                                        min-width: unset
+                                        width: 100%
+
+                                        &:not(:first-child)
+                                            margin-top: 40px
+                                            margin-left: 0

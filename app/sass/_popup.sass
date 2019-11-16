@@ -55,6 +55,15 @@
                 flex-direction: column
                 justify-content: space-between
 
+                .err-message
+                    display: none
+                    position: absolute
+                    bottom: 100%
+                    font-size: 9px
+                    left: 15px
+                    margin-bottom: 2px
+                    color: #D70C17
+
                 .bottom
                     display: flex
                     flex-direction: column
@@ -63,6 +72,7 @@
                     .accept
                         display: flex
                         align-items: flex-start
+                        position: relative
                         margin-bottom: 30px
 
                         .custom-checkbox
@@ -78,15 +88,22 @@
                             svg
                                 display: none
 
+                        .error
+                            display: none !important
+
                         input
                             display: inline-block
                             height: 0
                             width: 0
                             visibility: hidden
 
-                            &:checked+.custom-checkbox
+                            &:checked~.custom-checkbox
                                 svg
                                     display: inline-block
+
+                            &.error~.err-message
+                                left: 0
+                                display: inline-block
 
                     button
                         font-family: $gotham
@@ -120,6 +137,9 @@
                             transition: transform .3s, top .3s
                             transform-origin: left
 
+                        label.error
+                            display: none !important
+
                         input, textarea
                             resize: none
                             width: 100%
@@ -128,6 +148,17 @@
                             border: 1px solid #4C4C4C
                             color: white
                             padding: 23px 20px 9px
+
+                            &.error
+                                border: 1px solid #D70C17
+
+                            &.error~.err-message
+                                display: inline-block
+
+                        textarea:-webkit-autofill, input:-webkit-autofill
+                            &~.placeholder
+                                z-index: 20
+                                color: black
 
                         &.triggered
                             .placeholder
@@ -156,11 +187,84 @@
             form
                 justify-content: center
 
+                .slide-two
+                    display: none
+
                 .form
                     height: auto
 
                     .bottom
                         margin-top: 120px
+
+                .second-form
+                    display: none
+
+                    .fields
+                        .field
+                            .radio-group
+                                padding: 6px
+                                border: 1px solid #4C4C4C
+                                display: flex
+                                width: 100%
+
+                                label
+                                    width: 50%
+                                    margin-bottom: 0
+
+                                    span
+                                        height: 100%
+                                        width: 100%
+                                        display: flex
+                                        align-items: center
+                                        justify-content: center
+                                        padding-top: 10px
+                                        padding-bottom: 10px
+                                        cursor: pointer
+
+                                    input
+                                        display: inline-block
+                                        height: 0
+                                        width: 0
+                                        visibility: hidden
+                                        position: absolute
+
+                                        &:checked+span
+                                            color: black
+                                            background-color: #fff
+
+                    .bottom
+                        margin-top: 30px
+                        justify-content: flex-start
+                        flex-direction: row
+                        flex-wrap: wrap
+
+                        .accept
+                            width: 100%
+                            order: 1
+                            margin-bottom: 60px
+
+                        button
+                            margin-right: 0
+
+                            &:last-child
+                                border: none
+
+        &.second-slide
+            .content
+                form
+                    .form
+                        display: none
+
+                    .desc, .title
+                        display: none
+
+                        &.slide-two
+                            display: inline-block
+
+                    .second-form
+                        display: flex
+
+
 
 @media screen and (max-height: 1000px)
     .popup
@@ -245,6 +349,8 @@
 @media screen and (max-width: 520px)
     .popup
         .content
+            align-items: flex-start
+
             form
                 .form
                     .fields

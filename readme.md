@@ -30,7 +30,7 @@
 <h2>Basic rules</h2>
 
 <ol>
-	<li>All custom <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/js/_custom.js</strong></li>
+	<li>All custom <strong title="scripts task"><em>scripts</em></strong> located in <strong>app/js/index.js</strong></li>
 	<li>All custom <strong title="styles task"><em>styles</em></strong> located in <strong>app/sass/main.sass</strong></li>
 	<li>All Sass <strong>vars</strong> placed in <strong>app/sass/_vars.sass</strong></li>
 	<li>All <strong>fonts</strong> plug in <strong>app/sass/_fonts.sass</strong></li>

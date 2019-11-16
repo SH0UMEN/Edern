@@ -21,6 +21,11 @@ body, html, main
     background-color: $accent
     color: #fff
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+    -webkit-appearance: none
+    margin: 0
+
 input, textarea
     outline: none
 
@@ -655,7 +660,34 @@ html
                                 opacity: .3
 
                             .category
-                                padding: 0 0 0 25px
+                                margin: 0 0 0 25px
+                                position: relative
+                                transition: color .3s
+
+                                &:after
+                                    left: -4px
+                                    right: calc(100% + 4px)
+                                    top: 50%
+                                    margin-top: 1px
+                                    position: absolute
+                                    content: ""
+                                    display: block
+                                    height: 1px
+                                    background-color: black
+                                    transition: right .3s
+
+                                &.active
+                                    color: #B3B3B3
+
+                                    &:after
+                                        right: -4px
+
+                        .menu-item
+                            height: 100%
+                            display: none
+
+                            &.shown
+                                display: block
 
                         .cards
                             height: 100%

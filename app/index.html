@@ -11,9 +11,7 @@
 	<meta name="viewport" content="width=device-width">
 
 	<link rel="icon" href="img/favicon.png">
-	<meta property="og:image" content="img/@1x/preview.jpg">
-	
-	<link rel="stylesheet" href="css/styles.min.css">
+	<link rel="stylesheet" href="css/main.css">
 
 </head>
 
@@ -355,68 +353,188 @@
             <div class="menu">
                 <div class="categories">
                     <span class="cat-label">Les catégories:</span>
-                    <button class="reset-styles category">Carte</button>
-                    <button class="reset-styles category">Cocktails</button>
-                    <button class="reset-styles category">Cigare Lounge</button>
-                    <button class="reset-styles category">Menu déjeuner</button>
-                    <button class="reset-styles category">Brunch festif</button>
-                    <button class="reset-styles category">Menu événements</button>
+                    <button class="reset-styles category active" data-menu="1">Carte</button>
+                    <button class="reset-styles category" data-menu="2">Cocktails</button>
+                    <button class="reset-styles category" data-menu="3">Cigare Lounge</button>
+                    <button class="reset-styles category" data-menu="4">Menu déjeuner</button>
+                    <button class="reset-styles category" data-menu="5">Brunch festif</button>
+                    <button class="reset-styles category" data-menu="6">Menu événements</button>
                 </div>
-                <div class="cards">
-                    <div class="card">
-                        <span class="label">To share</span>
-                        <ul class="items">
-                            <li class="item">
-                                <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
-                                <span class="price">10 €</span>
-                            </li>
-                            <li class="item">
-                                <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
-                                <span class="price">10 €</span>
-                            </li>
-                            <li class="item">
-                                <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
-                                <span class="price">10 €</span>
-                            </li>
-                        </ul>
+                <div class="menu-item shown" id="menu-1">
+                    <div class="cards">
+                        <div class="card">
+                            <span class="label">To share</span>
+                            <ul class="items">
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <span class="label">To share</span>
+                            <ul class="items">
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <span class="label">To share</span>
+                            <ul class="items">
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LA MAISON NORDIQUE « SOLOGNE » CAVIAR (30gr)</span>
+                                    <span class="price">120 €</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="card">
-                        <span class="label">To share</span>
-                        <ul class="items">
-                            <li class="item">
-                                <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
-                                <span class="price">10 €</span>
-                            </li>
-                            <li class="item">
-                                <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
-                                <span class="price">10 €</span>
-                            </li>
-                            <li class="item">
-                                <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
-                                <span class="price">10 €</span>
-                            </li>
-                        </ul>
+                </div>
+                <div class="menu-item" id="menu-2">
+                    <div class="cards">
+                        <div class="card">
+                            <span class="label">To share</span>
+                            <ul class="items">
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <span class="label">To share</span>
+                            <ul class="items">
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <span class="label">To share</span>
+                            <ul class="items">
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LA MAISON NORDIQUE « SOLOGNE » CAVIAR (30gr)</span>
+                                    <span class="price">120 €</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="card">
-                        <span class="label">To share</span>
-                        <ul class="items">
-                            <li class="item">
-                                <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
-                                <span class="price">10 €</span>
-                            </li>
-                            <li class="item">
-                                <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
-                                <span class="price">10 €</span>
-                            </li>
-                            <li class="item">
-                                <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
-                                <span class="price">10 €</span>
-                            </li>
-                            <li class="item">
-                                <span class="item-title">LA MAISON NORDIQUE « SOLOGNE » CAVIAR (30gr)</span>
-                                <span class="price">120 €</span>
-                            </li>
-                        </ul>
+                </div>
+                <div class="menu-item" id="menu-3">
+                    <div class="cards">
+                        <div class="card">
+                            <span class="label">To share</span>
+                            <ul class="items">
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <span class="label">To share</span>
+                            <ul class="items">
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <span class="label">To share</span>
+                            <ul class="items">
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LANDES POULTRY WINGS / CARAMELIZED / SOY SAUCE / GINGER</span>
+                                    <span class="price">10 €</span>
+                                </li>
+                                <li class="item">
+                                    <span class="item-title">LA MAISON NORDIQUE « SOLOGNE » CAVIAR (30gr)</span>
+                                    <span class="price">120 €</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -565,6 +683,7 @@
                                     <path d="M1 3L3 5L7 1" stroke="black"/>
                                 </svg>
                             </span>
+                            <span class="err-message">Required</span>
                             <span class="checkbox-text">
                                 J'accepte nos conditions d'utilisation et notre politique de confidentialité
                             </span>
@@ -669,15 +788,15 @@
                             <span class="title">Сertificate</span>
                             <ul class="contacts">
                                 <li>
-                                    <span class="text" id="cert-from">Adam Smith</span>
+                                    <span class="text" id="cert-from">&nbsp;</span>
                                     <span class="abs">From</span>
                                 </li>
                                 <li>
-                                    <span class="text" id="cert-to">Francesco Provenzano</span>
+                                    <span class="text" id="cert-to">&nbsp;</span>
                                     <span class="abs">To</span>
                                 </li>
                                 <li>
-                                    <span class="text" id="cert-montant">560€</span>
+                                    <span class="text" min="1" id="cert-amount">&nbsp;</span>
                                     <span class="abs">Montant</span>
                                 </li>
                             </ul>
@@ -692,28 +811,70 @@
             </div>
             <form action="#">
                 <span class="title">Destinataire</span>
+                <span class="title slide-two">Payeur</span>
                 <p class="desc">Entrez le destinataire et le certificat sous forme électronique lui sera envoyé après le paiement.</p>
+                <p class="desc slide-two">Sélectionnez un mode de paiement et entrez vos coordonnées. Une fois le paiement effectué, vous recevrez une notification à l'adresse électronique spécifiée.</p>
                 <div class="form first-form">
                     <div class="fields">
                         <div class="field half">
-                            <input type="text">
-                            <span class="placeholder">Prénom</span>
+                            <input type="text" name="rec_name" required class="cert-field" data-cert="to">
+                            <span class="err-message">Required</span>
+                            <span class="placeholder">Nom du destinataire</span>
                         </div>
                         <div class="field half">
-                            <input type="text">
-                            <span class="placeholder">Nom de famille</span>
+                            <input type="text" name="your_name" required class="cert-field" data-cert="from">
+                            <span class="err-message">Required</span>
+                            <span class="placeholder">Nom de l'expéditeur</span>
                         </div>
                         <div class="field half">
-                            <input type="text">
-                            <span class="placeholder">Société (facultatif)</span>
+                            <input type="number" name="amount" required class="cert-field" data-cert="amount">
+                            <span class="err-message">Required</span>
+                            <span class="placeholder">Montant du certificat</span>
                         </div>
                         <div class="field half">
-                            <input type="text">
-                            <span class="placeholder">Nombre de personnes</span>
+                            <input type="text" name="email-to" required>
+                            <span class="err-message">Required</span>
+                            <span class="placeholder">E-mail du destinataire</span>
                         </div>
                     </div>
                     <div class="bottom">
-                        <button class="reset-styles">Continuer</button>
+                        <button class="reset-styles next-form">Continuer</button>
+                    </div>
+                </div>
+                <div class="form second-form">
+                    <div class="fields">
+                        <div class="field">
+                            <div class="radio-group">
+                                <label><input type="radio" name="pay_type" checked value="card"><span>Carte bancaire</span></label>
+                                <label><input type="radio" name="pay_type" value="pp"><span>PayPal</span></label>
+                            </div>
+                        </div>
+                        <div class="field half">
+                            <input type="text" name="your-name" required>
+                            <span class="err-message">Required</span>
+                            <span class="placeholder">Votre nom</span>
+                        </div>
+                        <div class="field half">
+                            <input type="text" name="your-email" required>
+                            <span class="err-message">Required</span>
+                            <span class="placeholder">Votre E-mail</span>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <label class="accept">
+                            <input type="checkbox" required name="agree">
+                            <span class="custom-checkbox">
+                                <svg width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 3L3 5L7 1" stroke="black"/>
+                                </svg>
+                            </span>
+                            <span class="err-message">Required</span>
+                            <span class="checkbox-text">
+                                J'accepte nos conditions d'utilisation et notre politique de confidentialité
+                            </span>
+                        </label>
+                        <button class="reset-styles" type="submit">Payer</button>
+                        <button class="reset-styles back">Retour</button>
                     </div>
                 </div>
             </form>
@@ -721,6 +882,6 @@
     </div>
 
     <script src="js/scripts.min.js"></script>
-
+    <script src="js/dist/index.js"></script>
 </body>
 </html>

@@ -220,6 +220,7 @@ $(document).ready(function () {
     });
 
     //Validation
+    $("#reservation form").validate();
     let certForm = $('#cert form').validate();
 
     $(".next-form").on("click", function(e) {

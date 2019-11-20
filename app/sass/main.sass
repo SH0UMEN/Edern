@@ -47,6 +47,15 @@ html
         background-color: #000000
         letter-spacing: 0.05em
 
+        .btn-fill
+            background-color: #fff
+            color: black
+            transition: color .4s, background-color .4s
+
+            &:hover
+                color: white
+                background-color: black
+
         .slider
             height: 100%
 
@@ -79,6 +88,34 @@ html
                     position: absolute
                     transform: rotate(90deg) scale(-1)
                     display: block
+
+                .photo
+                    position: relative
+                    overflow: hidden
+
+                    &:after
+                        position: absolute
+                        content: ''
+                        background-color: white
+                        width: 100%
+                        height: 100%
+                        left: 0
+                        top: 0
+                        transition: width .5s
+                        transition-timing-function: $timingFunction
+
+                    img
+                        transform: scale(1.1)
+                        transform-origin: center
+                        transition: transform .5s
+
+                &.shown
+                    .photo
+                        &:after
+                            width: 0
+
+                        img
+                            transform: scale(1)
 
             .photo-desc
                 min-width: 360px
@@ -225,7 +262,12 @@ html
 
                     a
                         color: white
+                        transition: opacity .4s
+                        opacity: .3
                         text-decoration: none
+
+                        &:hover
+                            opacity: 1
 
             .left, .right
                 top: 0
@@ -468,6 +510,31 @@ html
                         margin-top: 20px
                         white-space: nowrap
                         margin-left: -2px
+
+                        .line
+                            display: block
+                            position: relative
+                            overflow: hidden
+
+                            span
+                                position: relative
+                                bottom: -80px
+                                transition: bottom .5s
+                                transition-timing-function: $timingFunction
+
+                            &:nth-child(2)
+                                span
+                                    transition-delay: .1s
+
+                            &:nth-child(3)
+                                span
+                                    transition-delay: .2s
+
+                    &.shown
+                        .section-title
+                            .line
+                                span
+                                    bottom: 0
 
                 &#first-screen
                     display: block

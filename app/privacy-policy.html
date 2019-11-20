@@ -2,17 +2,12 @@
 <html lang="ru">
 
 <head>
-
     <meta charset="utf-8">
-
-    <title>OptimizedHTML 5</title>
-    <meta name="description" content="Startup HTML template OptimizedHTML 5">
-
-    <meta name="viewport" content="width=device-width">
-
-    <link rel="icon" href="img/favicon.png">
-    <meta property="og:image" content="img/@1x/preview.jpg">
-
+    <title>Privacy Policy || Edern</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" type="image/ico" href="img/Favicon_16.ico" sizes="16x16">
+    <link rel="icon" type="image/ico" href="img/Favicon_32.ico" sizes="32x32">
+    <link rel="icon" type="image/ico" href="img/Favicon_48.ico" sizes="48x48">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/privacy.css">
 </head>
@@ -23,8 +18,8 @@
         <ul>
             <li><a href="/#philosophy">La philosophie</a></li>
             <li><a href="/#chief">Chef</a></li>
-            <li><a href="/#party">La fete</a></li>
-            <li><a href="/#enterprise">Enterprise</a></li>
+            <li><a href="/#party">La fête</a></li>
+            <li><a href="/#enterprise">Entreprise</a></li>
             <li><a href="/#menu">Menu</a></li>
             <li><a href="/#press">La presse</a></li>
             <li><a href="/#contacts">Contact</a></li>
@@ -45,15 +40,15 @@
         <ul>
             <li><a href="#philosophy">La philosophie</a></li>
             <li><a href="#chief">Chef</a></li>
-            <li><a href="#party">La fete</a></li>
-            <li><a href="#enterprise">Enterprise</a></li>
+            <li><a href="#party">La fête</a></li>
+            <li><a href="#enterprise">Entreprise</a></li>
             <li><a href="#menu">Menu</a></li>
             <li><a href="#press">La presse</a></li>
             <li><a href="#contacts">Contact</a></li>
         </ul>
         <div class="btns">
             <button class="reset-styles theme-changing black cert">Plaisir d’offrir</button>
-            <button class="reset-styles theme-changing black reservation">Reservation</button>
+            <button class="reset-styles theme-changing black reservation">Réservation</button>
         </div>
     </div>
     <div class="top-menu">
@@ -86,7 +81,7 @@
         </div>
         <div class="right">
             <button class="reset-styles theme-changing black cert">Plaisir d’offrir</button>
-            <button class="reset-styles theme-changing black reservation">Reservation</button>
+            <button class="reset-styles theme-changing black reservation">Réservation</button>
             <a class="theme-changing black" href="tel:01 45 63 88 01">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.62 7.79C5.06 10.62 7.38 12.93 10.21 14.38L12.41 12.18C12.68 11.91 13.08 11.82 13.43 11.94C14.55 12.31 15.76 12.51 17 12.51C17.55 12.51 18 12.96 18 13.51V17C18 17.55 17.55 18 17 18C7.61 18 0 10.39 0 1C0 0.45 0.45 0 1 0H4.5C5.05 0 5.5 0.45 5.5 1C5.5 2.25 5.7 3.45 6.07 4.57C6.18 4.92 6.1 5.31 5.82 5.59L3.62 7.79Z"/>
@@ -207,7 +202,7 @@
             </div>
             <div class="copy">
                     <span class="gray">
-                        © Copyright ©2019 All rights reserved | Edern-Restaurant
+                        © Copyright ©2019 Tous droits réservés | Edern-Restaurant
                     </span>
                 <a href="/privacy-policy.html" target="_blank" class="reset-styles">Conditions d'utilisation</a>
                 <a href="/privacy-policy.html" target="_blank" class="reset-styles">Politique de confidentialité</a>
@@ -245,7 +240,7 @@
                         <span class="placeholder">Société (facultatif)</span>
                     </div>
                     <div class="field half">
-                        <input type="text" required name="num_of_persone">
+                        <input type="number" required name="num_of_person">
                         <span class="err-message">Required</span>
                         <span class="placeholder">Nombre de personnes</span>
                     </div>
@@ -255,13 +250,13 @@
                         <span class="placeholder">Date</span>
                     </div>
                     <div class="field half">
-                        <input type="text" required name="phone">
+                        <input type="number" required name="phone">
                         <span class="err-message">Required</span>
                         <span class="placeholder">Numéro de téléphone</span>
                     </div>
                     <div class="field">
-                        <input type="text" required name="email">
-                        <span class="err-message">Required</span>
+                        <input type="email" required name="email">
+                        <span class="err-message">Enter valid email</span>
                         <span class="placeholder">E-mail</span>
                     </div>
                     <div class="field">
@@ -380,15 +375,15 @@
                 </div>
                 <div class="right">
                     <div class="content">
-                        <span class="title">Сertificate</span>
+                        <span class="title">Certificat</span>
                         <ul class="contacts">
                             <li>
                                 <span class="text" id="cert-from">&nbsp;</span>
-                                <span class="abs">From</span>
+                                <span class="abs">De</span>
                             </li>
                             <li>
                                 <span class="text" id="cert-to">&nbsp;</span>
-                                <span class="abs">To</span>
+                                <span class="abs">À</span>
                             </li>
                             <li>
                                 <span class="text" min="1" id="cert-amount">&nbsp;</span>
@@ -424,13 +419,13 @@
                         <span class="placeholder">Nom de l'expéditeur</span>
                     </div>
                     <div class="field half">
-                        <input type="number" name="amount" required class="cert-field" data-cert="amount">
+                        <input type="number" name="amount" min="1" oninput="validity.valid||(value='');" required class="cert-field" data-cert="amount">
                         <span class="err-message">Required</span>
                         <span class="placeholder">Montant du certificat</span>
                     </div>
                     <div class="field half">
-                        <input type="text" name="email-to" required>
-                        <span class="err-message">Required</span>
+                        <input type="email" name="email-to" required>
+                        <span class="err-message">Enter valid e-mail</span>
                         <span class="placeholder">E-mail du destinataire</span>
                     </div>
                 </div>
@@ -440,20 +435,20 @@
             </div>
             <div class="form second-form">
                 <div class="fields">
-                    <div class="field">
-                        <div class="radio-group">
-                            <label><input type="radio" name="pay_type" checked value="card"><span>Carte bancaire</span></label>
-                            <label><input type="radio" name="pay_type" value="pp"><span>PayPal</span></label>
-                        </div>
-                    </div>
+                    <!--<div class="field">-->
+                    <!--<div class="radio-group">-->
+                    <!--<label><input type="radio" name="pay_type" checked value="card"><span>Carte bancaire</span></label>-->
+                    <!--<label><input type="radio" name="pay_type" value="pp"><span>PayPal</span></label>-->
+                    <!--</div>-->
+                    <!--</div>-->
                     <div class="field half">
                         <input type="text" name="your-name" required>
                         <span class="err-message">Required</span>
                         <span class="placeholder">Votre nom</span>
                     </div>
                     <div class="field half">
-                        <input type="text" name="your-email" required>
-                        <span class="err-message">Required</span>
+                        <input type="email" name="your-email" required>
+                        <span class="err-message">Enter valid email</span>
                         <span class="placeholder">Votre E-mail</span>
                     </div>
                 </div>
@@ -468,10 +463,20 @@
                             </span>
                         <span class="err-message">Required</span>
                         <span class="checkbox-text">
-                            J'accepte nos <a href="/privacy-policy.html" target="_blank">conditions d'utilisation</a> et notre <a href="/privacy-policy.html" target="_blank">politique de confidentialité</a>
-                        </span>
+                                J'accepte nos <a href="/privacy-policy.html"
+                                                 target="_blank">conditions d'utilisation</a> et notre <a
+                                href="/privacy-policy.html" target="_blank">politique de confidentialité</a>
+                            </span>
                     </label>
-                    <button class="reset-styles" type="submit">Payer</button>
+                    <button class="reset-styles to-pay">Payer</button>
+                    <button class="reset-styles back">Retour</button>
+                </div>
+            </div>
+            <div class="form third-form">
+                <div class="fields">
+
+                </div>
+                <div class="bottom">
                     <button class="reset-styles back">Retour</button>
                 </div>
             </div>
@@ -480,6 +485,8 @@
 </div>
 
 <script src="js/scripts.min.js"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+</script>
 <script src="js/dist/privacy.js"></script>
 </body>
 </html>

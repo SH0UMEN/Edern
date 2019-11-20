@@ -89,7 +89,7 @@
                             svg
                                 display: none
 
-                        .error
+                        label.error
                             display: none !important
 
                         input
@@ -199,7 +199,18 @@
                     height: auto
 
                     .bottom
-                        margin-top: 120px
+                        margin-top: 85px
+
+                .third-form
+                    display: none
+
+                    .fields
+                        margin-right: 0
+                        margin-left: 0
+                        margin-top: 30px
+
+                    .bottom
+                        margin-top: 40px
 
                 .second-form
                     display: none
@@ -246,7 +257,7 @@
                         .accept
                             width: 100%
                             order: 1
-                            margin-bottom: 60px
+                            margin-bottom: 110px
 
                         button
                             margin-right: 0
@@ -254,7 +265,7 @@
                             &:last-child
                                 border: none
 
-        &.second-slide
+        &.second-slide, &.third-slide
             .content
                 form
                     .form
@@ -266,10 +277,69 @@
                         &.slide-two
                             display: inline-block
 
+        &.second-slide
+            .content
+                form
                     .second-form
                         display: flex
 
+        &.third-slide
+            .content
+                form
+                    .third-form
+                        display: flex
 
+.message-box
+    position: fixed
+    left: 0
+    top: -100%
+    width: 100%
+    height: 100%
+    z-index: 1000
+    display: flex
+    align-items: center
+    justify-content: center
+    padding-left: 10px
+    padding-right: 10px
+
+    .shadow
+        position: absolute
+        width: 100%
+        left: 0
+        height: 100%
+        top: 0
+        background-color: rgba(0,0,0,.5)
+
+    .content
+        position: relative
+        z-index: 2
+        width: 100%
+        max-width: 400px
+        background-color: black
+        color: white
+        padding-left: 15px
+        padding-right: 15px
+        box-shadow: 0px 0px 10px 0px white
+
+        .head
+            padding-top: 15px
+            padding-bottom: 15px
+            display: flex
+            justify-content: space-between
+            border-bottom: 1px solid white
+
+            .close-mes-box
+                svg
+                    height: 15px
+                    width: 15px
+
+        .body
+            padding-top: 15px
+            padding-bottom: 15px
+            min-height: 100px
+
+    &.shown
+        top: 0
 
 @media screen and (max-height: 1000px)
     .popup

@@ -1,3 +1,5 @@
+let ppInit;
+
 $(document).ready(function () {
     let navWidth = $(".nav .left").width() * 2,
         menuOpened = false,
@@ -5,7 +7,11 @@ $(document).ready(function () {
         priv = $("#privacy"),
         main = $("main"),
         mainScroll = null,
-        vertical = false;
+        vertical = false,
+        mesBox = $('.message-box'),
+        mesBoxTitle = $(mesBox).find('.head .text'),
+        mesBoxText = $(mesBox).find('.body'),
+        API = "/wp-admin/admin-ajax.php";
 
     function mobCheck() {
         if($(window).width() > 640) {
@@ -18,6 +24,59 @@ $(document).ready(function () {
     function openPopup(id) {
         $('#'+id).addClass('shown');
     }
+
+    function openMesBox(title, text) {
+        $(mesBoxText).html(text);
+        $(mesBoxTitle).html(title);
+        $(mesBox).addClass("shown");
+    }
+
+    function closeMesBox() {
+        $(mesBox).removeClass('shown');
+    }
+
+    function resetCertForm() {
+        $("#cert input").val("");
+        $('#cert').removeClass('second-slide third-slide shown');
+        $('#cert .certificate .text').html("&nbsp;");
+    }
+
+    ppInit = () => {
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                let amount = document.querySelector('input[data-cert=amount]').value;
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: amount.toString(),
+                            currency_code: 'EUR'
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                // This function captures the funds from the transaction.
+                openMesBox("Paiement traité","Le certificat sera envoyé bientôt");
+                resetCertForm();
+                return actions.order.capture().then(function(details) {
+                    let fd = new FormData();
+                    fd.append('orderID', data.orderID);
+                    fd.append('action', 'check-order');
+                    fd.append('receiverName', $('#cert [data-cert=to]').val());
+                    fd.append('senderName', $('#cert [data-cert=from]').val());
+                    fd.append('sender', $('#cert [name=your-name]').val());
+                    fd.append('senderEmail', $('#cert [name=your-email]').val());
+                    fd.append('receiverEmail', $('#cert [name=email-to]').val());
+                    return fetch(API, {
+                        method: 'post',
+                        body: fd
+                    });
+                });
+            }
+        }).render('#cert .third-form .fields');
+    }
+
+    $('.message-box .shadow, .message-box .close-mes-box').on('click', closeMesBox);
 
     function reinitPS() {
         if(vertical) {
@@ -137,7 +196,31 @@ $(document).ready(function () {
     });
 
     //Validation
-    $("#reservation form").validate();
+    let resForm = $("#reservation form").validate();
+
+    $("#reservation form").on('submit', function (e) {
+        e.preventDefault();
+        if(resForm.form()) {
+            let data = new FormData(this);
+            data.append('action', 'reservation');
+            $.ajax({
+                url: API,
+                method: "post",
+                data: data,
+                processData: false,
+                contentType: false,
+                success: (res)=>{
+                    if(res == '1') {
+                        $("#reservation").removeClass("shown");
+                        openMesBox('Thanks', "Thanks a million");
+                    } else {
+                        openMesBox('Error', "Something went wrong. Please try again late");
+                    }
+                }
+            })
+        }
+    });
+
     let certForm = $('#cert form').validate();
 
     $(".next-form").on("click", function(e) {
@@ -156,7 +239,29 @@ $(document).ready(function () {
     });
 
     $("#cert .back").on('click', function (e) {
-        $('#cert').removeClass('second-slide');
+        let cert = $("#cert");
+        if($(cert).hasClass('second-slide')) {
+            $(cert).removeClass('second-slide');
+        } else {
+            $(cert).removeClass('third-slide');
+            $(cert).addClass('second-slide');
+        }
+        e.preventDefault();
+    });
+
+    $("#cert .to-pay").on('click', function (e) {
+        let res = true;
+        $('#cert .second-form input').each(function () {
+            if(res == true) {
+                res = certForm.element($(this));
+            } else {
+                certForm.element($(this));
+            }
+        });
+        if(res) {
+            $('#cert').removeClass('second-slide');
+            $('#cert').addClass('third-slide');
+        }
         e.preventDefault();
     });
 

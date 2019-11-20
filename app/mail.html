@@ -3,27 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <title>Certificate</title>
-    <link rel="stylesheet" href="css/certificate.css">
+    <link rel="stylesheet" href="http://edern-test.com.xsph.ru/wp-content/themes/edern/css/certificate.css">
+    <style>
+        @font-face {
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url("http://edern-test.com.xsph.ru/wp-content/themes/edern/fonts/Roboto-Light.ttf") format("woff2");
+        }
+
+        @font-face {
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url("http://edern-test.com.xsph.ru/wp-content/themes/edern/fonts/roboto-regular-webfont.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url("http://edern-test.com.xsph.ru/wp-content/themes/edern/fonts/roboto-bold-webfont.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: "Gotham Pro";
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url("http://edern-test.com.xsph.ru/wp-content/themes/edern/fonts/GothaProReg.otf") format("woff2");
+        }
+
+        @font-face {
+            font-family: "Gotham Pro";
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url("http://edern-test.com.xsph.ru/wp-content/themes/edern/fonts/GothaProMed.otf") format("woff2");
+        }
+
+        @font-face {
+            font-family: "Gotham Pro";
+            font-style: normal;
+            font-weight: 200;
+            font-display: swap;
+            src: url("http://edern-test.com.xsph.ru/wp-content/themes/edern/fonts/GothaProLig.otf") format("woff2");
+        }
+
+        @font-face {
+            font-family: "Gotham Pro";
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url("http://edern-test.com.xsph.ru/wp-content/themes/edern/fonts/GothaProBol.otf") format("woff2");
+        }
+
+        body {
+            font-family: "Roboto";
+            margin: 0;
+        }
+
+        .certificate {
+            background-color: #fff;
+            width: 1052px;
+            height: 720px;
+            display: flex;
+        }
+
+        .certificate .left {
+            width: 50%;
+            background-image: url("http://edern-test.com.xsph.ru/wp-content/themes/edern/img/cert-bg.webp");
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .certificate .left img {
+            width: 226px;
+        }
+
+        .certificate .right {
+            width: 50%;
+        }
+
+        .certificate .right .content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            font-size: 16px;
+            padding-left: 175px;
+        }
+
+        .certificate .right .content .title {
+            font-family: "Gotham Pro";
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .certificate .right .content ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        .certificate .right .content ul li {
+            position: relative;
+        }
+
+        .certificate .right .content ul li .abs {
+            position: absolute;
+            right: 100%;
+            font-size: 8px;
+            margin-right: 10px;
+            color: #B8B8B8;
+            margin-top: -5px;
+        }
+
+        .certificate .right .content ul li .text {
+            font-weight: 500;
+        }
+
+        .certificate .right .content ul li:not(:first-child) {
+            margin-top: 20px;
+        }
+
+        .certificate .right .content p.info {
+            padding-right: 20px;
+            color: #B8B8B8;
+            margin-bottom: 0;
+            font-size: 10px;
+            line-height: 16px;
+        }
+    </style>
 </head>
 <body>
     <div class="certificate">
         <div class="left">
-            <img src="img/cert-logo.webp" alt="">
+            <img src="http://edern-test.com.xsph.ru/wp-content/themes/edern/img/cert-logo.webp" alt="">
         </div>
         <div class="right">
             <div class="content">
                 <span class="title">Сertificate</span>
                 <ul class="contacts">
                     <li>
-                        <span class="text" id="cert-from">Adam Smith</span>
+                        <span class="text" id="cert-from"></span>
                         <span class="abs">From</span>
                     </li>
                     <li>
-                        <span class="text" id="cert-to">Francesco Provenzano</span>
+                        <span class="text" id="cert-to"></span>
                         <span class="abs">To</span>
                     </li>
                     <li>
-                        <span class="text" id="cert-montant">560€</span>
+                        <span class="text" id="cert-montant"></span>
                         <span class="abs">Montant</span>
                     </li>
                 </ul>

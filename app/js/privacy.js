@@ -35,6 +35,43 @@ $(document).ready(function () {
         $(mesBox).removeClass('shown');
     }
 
+    function showOnScroll(els, spot, c) {
+        spot = spot/100;
+        let showOnLeft = $(window).width()*spot,
+            isBinded = false;
+
+        c = c || 'shown';
+
+        $(els).sort(function (a, b) {
+            return $(a).offset().left-$(b).offset().left;
+        });
+
+        let checkScroll = () => {
+            while(els.length != 0 && $($(els)[0]).offset().left < showOnLeft) {
+                $($(els)[0]).removeClass(c);
+                els = $(els).slice(1);
+            }
+        }
+
+        if(!vertical) {
+            $(main).bind('scroll', checkScroll);
+            isBinded = true;
+        }
+
+        $(main).scroll();
+
+        $(window).on('resize', function () {
+            showOnLeft = $(window).width()*spot;
+            if(vertical) {
+                $(main).unbind('scroll', checkScroll);
+                isBinded = false;
+            } else if(!isBinded) {
+                $(main).bind('scroll', checkScroll);
+                isBinded = true;
+            }
+        })
+    }
+
     function resetCertForm() {
         $("#cert input").val("");
         $('#cert').removeClass('second-slide third-slide shown');
@@ -110,6 +147,15 @@ $(document).ready(function () {
 
     mobCheck();
     reinitPS();
+
+    showOnScroll(".section-title-block, .sos-photo, #menu .cards, .press-item, .map-wrapper, #contacts .contacts, .wins, #contacts-add", 80, 'hide');
+
+    $('#menu .cards').each(function() {
+        let cards = $(this).find('.card');
+        $(cards).each(function(i) {
+            $(this).css("transition-delay", (i*0.2)+"s");
+        })
+    });
 
     $(main).css("transform", "scale(1)");
 

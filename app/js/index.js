@@ -69,15 +69,13 @@ $(document).ready(function () {
 
         let checkScroll = () => {
             while(els.length != 0 && $($(els)[0]).offset().left < showOnLeft) {
-                $($(els)[0]).addClass(c);
+                $($(els)[0]).removeClass(c);
                 els = $(els).slice(1);
             }
         }
 
-        if(!vertical) {
-            $(main).bind('scroll', checkScroll);
-            isBinded = true;
-        }
+        $(main).bind('scroll', checkScroll);
+        isBinded = true;
 
         $(main).scroll();
 
@@ -148,7 +146,19 @@ $(document).ready(function () {
 
     mobCheck();
     reinitPS();
-    showOnScroll(".section-title-block, .photo-wrapper", 70);
+
+    $("#menu .items").each(function () {
+        new PerfectScrollbar(this);
+    });
+
+    showOnScroll(".section-title-block, .sos-photo, #menu .cards, .press-item, .map-wrapper, #contacts .contacts, .wins, #contacts-add", 80, 'hide');
+
+    $('#menu .cards').each(function() {
+        let cards = $(this).find('.card');
+        $(cards).each(function(i) {
+            $(this).css("transition-delay", (i*0.2)+"s");
+        })
+    });
 
     $(main).css("transform", "scale(1)");
 

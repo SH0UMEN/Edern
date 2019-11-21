@@ -35,6 +35,34 @@ input, textarea
     &:required:valid
         border-color: green
 
+
+.sos-photo
+    position: relative
+    overflow: hidden
+
+    &:after
+        position: absolute
+        content: ''
+        background-color: white
+        width: 0
+        height: 100%
+        left: 0
+        top: 0
+        transition: width .8s
+        transition-timing-function: $timingFunction
+
+    img
+        transform: scale(1)
+        transform-origin: center
+        transition: transform .6s .3s
+
+    &.hide
+        &:after
+            width: 100%
+
+        img
+            transform: scale(1.1)
+
 html
     body
         font-size: $main-font
@@ -88,34 +116,6 @@ html
                     position: absolute
                     transform: rotate(90deg) scale(-1)
                     display: block
-
-                .photo
-                    position: relative
-                    overflow: hidden
-
-                    &:after
-                        position: absolute
-                        content: ''
-                        background-color: white
-                        width: 100%
-                        height: 100%
-                        left: 0
-                        top: 0
-                        transition: width .5s
-                        transition-timing-function: $timingFunction
-
-                    img
-                        transform: scale(1.1)
-                        transform-origin: center
-                        transition: transform .5s
-
-                &.shown
-                    .photo
-                        &:after
-                            width: 0
-
-                        img
-                            transform: scale(1)
 
             .photo-desc
                 min-width: 360px
@@ -518,23 +518,23 @@ html
 
                             span
                                 position: relative
-                                bottom: -80px
+                                bottom: 0
                                 transition: bottom .5s
                                 transition-timing-function: $timingFunction
 
                             &:nth-child(2)
                                 span
-                                    transition-delay: .1s
+                                    transition-delay: .2s
 
                             &:nth-child(3)
                                 span
-                                    transition-delay: .2s
+                                    transition-delay: .4s
 
-                    &.shown
+                    &.hide
                         .section-title
                             .line
                                 span
-                                    bottom: 0
+                                    bottom: -80px
 
                 &#first-screen
                     display: block
@@ -675,6 +675,14 @@ html
                                     top: 50%
                                     display: block
                                     margin-top: -165px
+                                    transition: left .8s
+                                    transition-timing-function: $timingFunction
+
+                        &.hide
+                            .wins-list
+                                .photo
+                                    .food
+                                        left: 200px
 
                 &#party
                     padding-left: 270px
@@ -767,6 +775,11 @@ html
                                 display: flex
                                 flex-direction: column
                                 justify-content: space-between
+                                position: relative
+                                top: 0
+                                opacity: 1
+                                transition: top .3s, opacity .3s
+                                transition-timing-function: $timingFunction
 
                                 &:not(:last-child)
                                     margin-right: 20px
@@ -785,8 +798,8 @@ html
                                         display: flex
                                         justify-content: space-between
 
-                                        &:not(:last-child)
-                                            margin-bottom: 15px
+                                        &:not(:first-child)
+                                            margin-top: 15px
 
                                         .item-title
                                             width: 333px
@@ -795,6 +808,11 @@ html
                                         .price
                                             margin-left: 30px
                                             white-space: nowrap
+
+                            &.hide
+                                .card
+                                    top: 50px
+                                    opacity: 0
 
                 &#press
                     padding-left: 270px
@@ -806,20 +824,34 @@ html
                         align-items: flex-start
 
                         .press-item
-                            img
+                            .img-wrapper
                                 margin-top: 105px
                                 margin-bottom: 85px
-                                display: block
+
+                                img
+                                    display: block
 
                             &:not(:last-child)
                                 margin-right: 145px
 
                             .press-text
                                 font-weight: 600
+                                position: relative
+                                right: 0
+                                opacity: 1
+                                transition: right .4s, opacity .4s
+                                transition-delay: .3s
 
                             .date
                                 opacity: .3
                                 font-weight: 300
+                                right: 0
+                                transition: right .4s, opacity .4s
+
+                            &.hide
+                                .date, .press-text
+                                    right: -80px
+                                    opacity: 0
 
                 &#contacts
                     padding-left: 270px
@@ -840,6 +872,17 @@ html
 
                             li
                                 display: flex
+                                position: relative
+                                right: 0px
+                                opacity: 1
+                                transition: right .5s, opacity .5s
+                                transition-timing-function: $timingFunction
+
+                                &:nth-child(2)
+                                    transition-delay: .1s
+
+                                &:last-child
+                                    transition-delay: .2s
 
                                 &:not(:last-child)
                                     margin-bottom: 25px
@@ -854,9 +897,34 @@ html
                                     min-width: 109px
                                     font-weight: 600
 
-                        iframe
-                            width: 617px
+                            &.hide
+                                li
+                                    right: -80px
+                                    opacity: 0
+
+                        .map-wrapper
+                            position: relative
                             height: 100%
+
+                            iframe
+                                width: 617px
+                                height: 100%
+
+                            &:after
+                                position: absolute
+                                display: block
+                                content: ''
+                                width: 0
+                                left: 0
+                                top: 0
+                                height: 100%
+                                background-color: #fff
+                                transition: width .8s
+                                transition-timing-function: $timingFunction
+
+                            &.hide
+                                &:after
+                                    width: 100%
 
                 &#contacts-add
                     padding: 0 127px
@@ -935,6 +1003,22 @@ html
 
                     &:after
                         display: none
+
+                    &:before
+                        display: block
+                        content: ''
+                        position: absolute
+                        width: 0
+                        left: 0
+                        height: 100%
+                        top: 0
+                        background-color: #fff
+                        transition: width .8s
+                        transition-timing-function: $timingFunction
+
+                    &.hide
+                        &:before
+                            width: 100%
 
         &.menu-opened
             > .open-menu

@@ -1,4 +1,70 @@
-let ppInit;
+function openMesBox(title, text) {
+    let mesBox = document.querySelector('.message-box'),
+        mesBoxTitle = document.querySelector('.message-box .head .text'),
+        mesBoxText = document.querySelector('.message-box .body');
+    mesBoxText.innerHTML = text;
+    mesBoxTitle.innerHTML = title;
+    mesBox.classList.add("shown");
+}
+
+function closeMesBox() {
+    let mesBox = document.querySelector('.message-box');
+    mesBox.classList.remove('shown');
+}
+
+function resetCertForm() {
+    let cert = document.querySelector('#cert'),
+        certValues = cert.querySelectorAll('.certificate .text'),
+        certInputs = cert.querySelectorAll("input");
+
+    cert.classList.remove('second-slide');
+    cert.classList.remove('shown');
+    cert.classList.remove('third-slide');
+
+    for(let c of certInputs) {
+        c.value = "";
+    }
+
+    for(let c of certValues) {
+        c.innerHTML = "&nbsp;";
+    }
+}
+
+let ppInit = () => {
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            let amount = document.querySelector('input[data-cert=amount]').value;
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: amount.toString(),
+                        currency_code: 'EUR'
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            // This function captures the funds from the transaction.
+            openMesBox("Paiement traité","Le certificat sera envoyé bientôt");
+            resetCertForm();
+            return actions.order.capture().then(function(details) {
+                let fd = new FormData();
+                fd.append('orderID', data.orderID);
+                fd.append('action', 'check-order');
+                fd.append('receiverName', document.querySelector('#cert [data-cert=to]').value);
+                fd.append('senderName', document.querySelector('#cert [data-cert=from]').value);
+                fd.append('sender', document.querySelector('#cert [name=your-name]').value);
+                fd.append('senderEmail', document.querySelector('#cert [name=your-email]').value);
+                fd.append('receiverEmail', document.querySelector('#cert [name=email-to]').value);
+                return fetch(API, {
+                    method: 'post',
+                    body: fd
+                });
+            });
+        }
+    }).render('#cert .third-form .fields');
+};
+
 $(document).ready(function () {
     let navWidth = $(".nav .left").width() * 2,
         menuOpened = false,
@@ -9,9 +75,6 @@ $(document).ready(function () {
         main = $("main"),
         mainScroll = null,
         vertical = false,
-        mesBox = $('.message-box'),
-        mesBoxTitle = $(mesBox).find('.head .text'),
-        mesBoxText = $(mesBox).find('.body'),
         API = "/wp-admin/admin-ajax.php";
 
     function mobCheck() {
@@ -38,22 +101,6 @@ $(document).ready(function () {
                 useBothWheelAxes: true
             });
         }
-    }
-
-    function openMesBox(title, text) {
-        $(mesBoxText).html(text);
-        $(mesBoxTitle).html(title);
-        $(mesBox).addClass("shown");
-    }
-
-    function closeMesBox() {
-        $(mesBox).removeClass('shown');
-    }
-
-    function resetCertForm() {
-        $("#cert input").val("");
-        $('#cert').removeClass('second-slide third-slide shown');
-        $('#cert .certificate .text').html("&nbsp;");
     }
 
     function showOnScroll(els, spot, c) {
@@ -151,7 +198,7 @@ $(document).ready(function () {
         new PerfectScrollbar(this);
     });
 
-    showOnScroll(".section-title-block, .sos-photo, #menu .cards, .press-item, .map-wrapper, #contacts .contacts, .wins, #contacts-add", 80, 'hide');
+    showOnScroll(".section-title-block, .sos-photo, #menu .cards, .press-item, .map-wrapper, #contacts .contacts, .wins, #contacts-add, .photo-desc", 80, 'hide');
 
     $('#menu .cards').each(function() {
         let cards = $(this).find('.card');
@@ -402,4 +449,8 @@ $(document).ready(function () {
         $("#menu #menu-"+cat).addClass('shown');
         $(this).addClass('active');
     });
+});
+
+window.addEventListener('load', ()=>{
+   document.querySelector("body").classList.remove("preloader-opened");
 });

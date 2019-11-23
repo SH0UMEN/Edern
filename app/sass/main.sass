@@ -26,6 +26,9 @@ input[type=number]::-webkit-outer-spin-button
     -webkit-appearance: none
     margin: 0
 
+input[type=number]
+    -moz-appearance: textfield
+
 input, textarea
     outline: none
 
@@ -74,6 +77,64 @@ html
         color: $text
         background-color: #000000
         letter-spacing: 0.05em
+        
+        .preloader
+            position: fixed
+            z-index: 0
+            height: 100%
+            width: 100vw
+            left: 0
+            top: -100%
+            background-color: #fff
+            display: flex
+            align-items: center
+            justify-content: center
+            transition: top 1s 1.7s, z-index .00001s 2.7s
+
+            .preloader-inner
+                position: relative
+                transition: opacity .5s 1.2s
+                opacity: 0
+
+                .line-left, .line-right
+                    background-color: #ccc
+                    height: 1px
+                    width: 67px
+                    position: absolute
+                    bottom: 6px
+
+                    &:after
+                        position: absolute
+                        content: ""
+                        background-color: black
+                        width: 100%
+                        transition: width 1.2s
+                        height: 100%
+                        top: 0
+
+                .line-left
+                    left: 0
+
+                    &:after
+                        right: 0
+
+                .line-right
+                    right: 0
+
+                    &:after
+                        left: 0
+
+        &.preloader-opened
+            .preloader
+                top: 0
+                z-index: 1000
+
+                .preloader-inner
+                    opacity: 1
+
+                    .line-left, .line-right
+                        &:after
+                            width: 0
 
         .btn-fill
             background-color: #fff
@@ -137,6 +198,21 @@ html
 
                     &:not(:first-child)
                         margin-top: 15px
+
+                span, .reservation
+                    right: 0px
+                    position: relative
+                    opacity: 1
+                    transition: right .5s, opacity .5s
+                    transition-timing-function: $timingFunction
+
+                .reservation
+                    transition-delay: .2s
+
+                &.hide
+                    span, .reservation
+                        right: -80px
+                        opacity: 0
 
             &.with-button
                 align-items: flex-end
@@ -758,7 +834,7 @@ html
                                         right: -4px
 
                         .menu-item
-                            height: 100%
+                            flex: 1 1 1px
                             display: none
 
                             &.shown

@@ -44,9 +44,11 @@ gulp.task('styles', function() {
 gulp.task('scripts', function() {
 	return gulp.src([
         'app/libs/jquery/dist/jquery.min.js',
+        'app/libs/masked-input/masked-input.min.js',
         'app/libs/perfect-scrollbar/perfect-scrollbar.min.js',
         'app/libs/slick/slick.min.js',
 		'app/libs/validate/jquery.validate.min.js',
+		'app/libs/datepicker/jquery-ui.min.js',
 		'app/js/_libs.js', // JS libraries (all in one)
 		])
 	.pipe(concat('scripts.min.js'))

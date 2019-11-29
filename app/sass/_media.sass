@@ -139,6 +139,13 @@
                         .right
                             margin-right: 63px
 
+@media screen and (max-width: 1200px)
+    html
+        body
+            .cookie-policy
+                left: 0
+                right: 0
+
 @media screen and (max-width: 1024px)
     html
         body
@@ -177,6 +184,18 @@
 @media screen and (max-width: 880px), screen and (orientation: portrait)
     html
         body
+            .cookie-policy
+                .content
+                    flex-wrap: wrap
+
+                    span
+                        width: 100%
+
+                    .agree
+                        width: 100%
+                        margin-left: 0
+                        margin-top: 16px
+
             header
                 .top-menu
                     .right
@@ -501,7 +520,6 @@
                             text-align: center
 
                             .contacts
-                                align-items: center
                                 margin-top: 78px
 
                             .copy

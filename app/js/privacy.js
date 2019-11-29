@@ -1,3 +1,7 @@
+if(localStorage.getItem('cookie-agree') != "1") {
+    document.querySelector('.cookie-policy').classList.add('shown');
+}
+
 function openMesBox(title, text) {
     let mesBox = document.querySelector('.message-box'),
         mesBoxTitle = document.querySelector('.message-box .head .text'),
@@ -82,6 +86,15 @@ $(document).ready(function () {
             vertical = true;
         }
     }
+
+    $.mask.definitions['@'] = '[0-3]';
+    $.mask.definitions['!'] = '[0-2]';
+    $.mask.definitions['~'] = '[0-1]';
+    $('input[name=date]').mask("@9/~9/!!99");
+
+    new PerfectScrollbar('#cert .form-inner', {
+        suppressScrollX: true
+    });
 
     function openPopup(id) {
         $('#'+id).addClass('shown');
@@ -330,5 +343,10 @@ $(document).ready(function () {
         $("#menu .menu-item").removeClass('shown');
         $("#menu #menu-"+cat).addClass('shown');
         $(this).addClass('active');
+    });
+
+    document.querySelector('.cookie-policy .agree').addEventListener('click', () => {
+        localStorage.setItem('cookie-agree', "1");
+        document.querySelector('.cookie-policy').classList.remove('shown');
     });
 });

@@ -52,9 +52,14 @@
     <div class="right"></div>
 </div>
 
-<div class="coockie-policy">
+<div class="cookie-policy">
     <div class="content">
-        span
+        <span>
+            By continuing to browse the site, you are agreeing to our use of cookies. For additional information, to manage or modify cookie storage options on your computer, read our <a
+                href="/privacy-policy">Cookie Policy</a> in General <a
+                href="/privacy-policy">Terms and Conditions</a>
+        </span>
+        <button class="reset-styles agree">OK</button>
     </div>
 </div>
 
@@ -885,84 +890,86 @@
             </div>
         </div>
         <form action="#">
-            <span class="title">Destinataire</span>
-            <span class="title slide-two">Payeur</span>
-            <p class="desc">Entrez le destinataire et le certificat sous forme électronique lui sera envoyé après le
-                paiement.</p>
-            <p class="desc slide-two">Sélectionnez un mode de paiement et entrez vos coordonnées. Une fois le paiement
-                effectué, vous recevrez une notification à l'adresse électronique spécifiée.</p>
-            <div class="form first-form">
-                <div class="fields">
-                    <div class="field half">
-                        <input type="text" name="rec_name" required class="cert-field" data-cert="to">
-                        <span class="err-message">Required</span>
-                        <span class="placeholder">Nom du destinataire</span>
+            <div class="form-inner">
+                <span class="title">Destinataire</span>
+                <span class="title slide-two">Payeur</span>
+                <p class="desc">Entrez le destinataire et le certificat sous forme électronique lui sera envoyé après le
+                    paiement.</p>
+                <p class="desc slide-two">Sélectionnez un mode de paiement et entrez vos coordonnées. Une fois le paiement
+                    effectué, vous recevrez une notification à l'adresse électronique spécifiée.</p>
+                <div class="form first-form">
+                    <div class="fields">
+                        <div class="field half">
+                            <input type="text" name="rec_name" required class="cert-field" data-cert="to">
+                            <span class="err-message">Required</span>
+                            <span class="placeholder">Nom du destinataire</span>
+                        </div>
+                        <div class="field half">
+                            <input type="text" name="your_name" required class="cert-field" data-cert="from">
+                            <span class="err-message">Required</span>
+                            <span class="placeholder">Nom de l'expéditeur</span>
+                        </div>
+                        <div class="field half">
+                            <input type="number" name="amount" min="1" oninput="validity.valid||(value='');" required class="cert-field" data-cert="amount">
+                            <span class="err-message">Required</span>
+                            <span class="placeholder">Montant du certificat</span>
+                        </div>
+                        <div class="field half">
+                            <input type="email" name="email-to" required>
+                            <span class="err-message">Enter valid e-mail</span>
+                            <span class="placeholder">E-mail du destinataire</span>
+                        </div>
                     </div>
-                    <div class="field half">
-                        <input type="text" name="your_name" required class="cert-field" data-cert="from">
-                        <span class="err-message">Required</span>
-                        <span class="placeholder">Nom de l'expéditeur</span>
-                    </div>
-                    <div class="field half">
-                        <input type="number" name="amount" min="1" oninput="validity.valid||(value='');" required class="cert-field" data-cert="amount">
-                        <span class="err-message">Required</span>
-                        <span class="placeholder">Montant du certificat</span>
-                    </div>
-                    <div class="field half">
-                        <input type="email" name="email-to" required>
-                        <span class="err-message">Enter valid e-mail</span>
-                        <span class="placeholder">E-mail du destinataire</span>
+                    <div class="bottom">
+                        <button class="reset-styles next-form">Continuer</button>
                     </div>
                 </div>
-                <div class="bottom">
-                    <button class="reset-styles next-form">Continuer</button>
-                </div>
-            </div>
-            <div class="form second-form">
-                <div class="fields">
-                    <!--<div class="field">-->
+                <div class="form second-form">
+                    <div class="fields">
+                        <!--<div class="field">-->
                         <!--<div class="radio-group">-->
-                            <!--<label><input type="radio" name="pay_type" checked value="card"><span>Carte bancaire</span></label>-->
-                            <!--<label><input type="radio" name="pay_type" value="pp"><span>PayPal</span></label>-->
+                        <!--<label><input type="radio" name="pay_type" checked value="card"><span>Carte bancaire</span></label>-->
+                        <!--<label><input type="radio" name="pay_type" value="pp"><span>PayPal</span></label>-->
                         <!--</div>-->
-                    <!--</div>-->
-                    <div class="field half">
-                        <input type="text" name="your-name" required>
-                        <span class="err-message">Required</span>
-                        <span class="placeholder">Votre nom</span>
+                        <!--</div>-->
+                        <div class="field half">
+                            <input type="text" name="your-name" required>
+                            <span class="err-message">Required</span>
+                            <span class="placeholder">Votre nom</span>
+                        </div>
+                        <div class="field half">
+                            <input type="email" name="your-email" required>
+                            <span class="err-message">Enter valid email</span>
+                            <span class="placeholder">Votre E-mail</span>
+                        </div>
                     </div>
-                    <div class="field half">
-                        <input type="email" name="your-email" required>
-                        <span class="err-message">Enter valid email</span>
-                        <span class="placeholder">Votre E-mail</span>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <label class="accept">
-                        <input type="checkbox" required name="agree">
-                        <span class="custom-checkbox">
+                    <div class="bottom">
+                        <label class="accept">
+                            <input type="checkbox" required name="agree">
+                            <span class="custom-checkbox">
                                 <svg width="8" height="6" viewBox="0 0 8 6" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 3L3 5L7 1" stroke="black"/>
                                 </svg>
                             </span>
-                        <span class="err-message">Required</span>
-                        <span class="checkbox-text">
+                            <span class="err-message">Required</span>
+                            <span class="checkbox-text">
                                 J'accepte nos <a href="/privacy-policy.html"
                                                  target="_blank">conditions d'utilisation</a> et notre <a
-                                href="/privacy-policy.html" target="_blank">politique de confidentialité</a>
+                                    href="/privacy-policy.html" target="_blank">politique de confidentialité</a>
                             </span>
-                    </label>
-                    <button class="reset-styles to-pay">Payer</button>
-                    <button class="reset-styles back">Retour</button>
+                        </label>
+                        <button class="reset-styles to-pay">Payer</button>
+                        <button class="reset-styles back">Retour</button>
+                    </div>
                 </div>
-            </div>
-            <div class="form third-form">
-                <div class="fields">
+                <div class="form third-form">
+                    <div class="fields">
 
-                </div>
-                <div class="bottom">
-                    <button class="reset-styles back">Retour</button>
+                    </div>
+                    <div class="bottom">
+                        <button class="reset-styles back">Retour</button>
+                    </div>
                 </div>
             </div>
         </form>

@@ -77,6 +77,34 @@ html
         color: $text
         background-color: #000000
         letter-spacing: 0.05em
+
+        .cookie-policy
+            position: fixed
+            z-index: 100
+            bottom: 0
+            left: 170px
+            right: 170px
+            display: none
+
+            .content
+                padding: 25px 32px
+                background-color: black
+                color: white
+                display: flex
+                align-items: center
+                font-size: 14px
+
+                a
+                    color: white
+                    text-decoration: underline
+
+                .agree
+                    background-color: white
+                    padding: 10px 30px
+                    margin-left: 40px
+
+            &.shown
+                display: block
         
         .preloader
             position: fixed

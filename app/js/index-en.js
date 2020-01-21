@@ -50,7 +50,7 @@ let ppInit = () => {
         },
         onApprove: function(data, actions) {
             // This function captures the funds from the transaction.
-            openMesBox("Paiement traité","Le certificat sera envoyé bientôt");
+            openMesBox("The payment has been processed","The certificate will be sent out soon");
             resetCertForm();
             return actions.order.capture().then(function(details) {
                 let fd = new FormData();
@@ -73,8 +73,10 @@ let ppInit = () => {
 $(document).ready(function () {
     let navWidth = $(".nav .left").width() * 2,
         menuOpened = false,
+        philosophy = $("#philosophy"),
+        secSlider = $("#slider-two"),
+        chief = $("#chief"),
         contacts = $("#contacts-add"),
-        priv = $("#privacy"),
         main = $("main"),
         mainScroll = null,
         vertical = false,
@@ -88,14 +90,22 @@ $(document).ready(function () {
         }
     }
 
-    $('input[name=date]').datepicker({
-        minDate: 0,
-        maxDate: "+12M",
-        dateFormat: 'dd/mm/yy',
-    });
-
     function openPopup(id) {
         $('#'+id).addClass('shown');
+    }
+
+    function reinitPS() {
+        if(vertical) {
+            if(mainScroll) {
+                mainScroll.destroy();
+                mainScroll = null;
+            }
+        } else if(!mainScroll) {
+            mainScroll = new PerfectScrollbar('main', {
+                suppressScrollY: true,
+                useBothWheelAxes: true
+            });
+        }
     }
 
     function showOnScroll(els, spot, c) {
@@ -116,10 +126,8 @@ $(document).ready(function () {
             }
         }
 
-        if(!vertical) {
-            $(main).bind('scroll', checkScroll);
-            isBinded = true;
-        }
+        $(main).bind('scroll', checkScroll);
+        isBinded = true;
 
         $(main).scroll();
 
@@ -135,30 +143,7 @@ $(document).ready(function () {
         })
     }
 
-    let tChanging = $(".theme-changing");
-    $(tChanging).addClass("black");
-
     $('.message-box .shadow, .message-box .close-mes-box').on('click', closeMesBox);
-
-    //Lazy loading
-    let llImages = document.querySelectorAll("img[data-lazy]");
-    for(let image of llImages) {
-        image.src = image.dataset.lazy;
-    }
-
-    function reinitPS() {
-        if(vertical) {
-            if(mainScroll) {
-                mainScroll.destroy();
-                mainScroll = null;
-            }
-        } else if(!mainScroll) {
-            mainScroll = new PerfectScrollbar('main', {
-                suppressScrollY: true,
-                useBothWheelAxes: true
-            });
-        }
-    }
 
     function toggleMenu() {
         $("body").toggleClass("menu-opened");
@@ -179,7 +164,11 @@ $(document).ready(function () {
     mobCheck();
     reinitPS();
 
-    showOnScroll(".section-title-block, .sos-photo, #menu .cards, .press-item, .map-wrapper, #contacts .contacts, .wins, #contacts-add", 80, 'hide');
+    $("#menu .items").each(function () {
+        new PerfectScrollbar(this);
+    });
+
+    showOnScroll(".section-title-block, .sos-photo, #menu .cards, .press-item, .map-wrapper, #contacts .contacts, .wins, #contacts-add, .photo-desc", 80, 'hide');
 
     $('#menu .cards').each(function() {
         let cards = $(this).find('.card');
@@ -190,11 +179,44 @@ $(document).ready(function () {
 
     $(main).css("transform", "scale(1)");
 
+    $("#first-screen .slider").slick({
+        arrows: false,
+        dots: true,
+        appendDots: "#first-screen",
+        autoplay: true,
+        autoplaySpeed: 3600,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        variableWidth: true,
+        draggable: false,
+        swipe: false
+    });
+
+    $("#slider-two .slider").slick({
+        arrows: false,
+        dots: true,
+        appendDots: "#slider-two",
+        autoplay: true,
+        autoplaySpeed: 3600,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        variableWidth: true,
+        draggable: false,
+        swipe: false
+    });
+
+    $(".slick-dots li").append('<svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0 0 17 17"><g stroke-width="1"><circle class="circle" cx="8.5" cy="8.5" r="8" fill="none" stroke="#ffffff" /></g></svg>');
+
     //Resize
     $(window).on("resize", function () {
         navWidth = $(".nav .left").width()*2;
         mobCheck();
         reinitPS();
+    });
+
+    const cetPS = new PerfectScrollbar('.categories', {
+        suppressScrollY: true,
+        useBothWheelAxes: true
     });
 
     //Open menu animation
@@ -203,16 +225,25 @@ $(document).ready(function () {
     $(".mob-nav a").on("click", toggleMenu);
 
     //Scroll
+    let tChanging = $(".theme-changing");
 
     $(main).on('scroll', function () {
         if(vertical) {
             $(tChanging).each(function () {
                 let top = $(this).offset().top+$(this).height();
 
-                if (top > $(priv).offset().top) {
+                if (top > $(philosophy).offset().top) {
                     $(this).addClass('black');
                 } else {
                     $(this).removeClass('black');
+                }
+
+                if (top > $(secSlider).offset().top) {
+                    $(this).removeClass('black');
+                }
+
+                if (top > $(chief).offset().top) {
+                    $(this).addClass("black");
                 }
 
                 if (top > $(contacts).offset().top) {
@@ -223,10 +254,18 @@ $(document).ready(function () {
             $(tChanging).each(function () {
                 let left = $(this).offset().left+$(this).width();
 
-                if (left > $(priv).offset().left) {
+                if (left > $(philosophy).offset().left) {
                     $(this).addClass('black');
                 } else {
                     $(this).removeClass('black');
+                }
+
+                if (left > $(secSlider).offset().left) {
+                    $(this).removeClass('black');
+                }
+
+                if (left > $(chief).offset().left) {
+                    $(this).addClass("black");
                 }
 
                 if (left > $(contacts).offset().left) {
@@ -237,6 +276,43 @@ $(document).ready(function () {
     });
 
     //Navigation hover
+    let prevScroll = 0,
+        links = $(".nav li a");
+
+    $('input[name=date]').datepicker({
+        minDate: 0,
+        maxDate: "+12M",
+        dateFormat: 'dd/mm/yy',
+    });
+
+    $(links).on("mouseover", function () {
+        let anchor = $(this).attr("href").indexOf('#');
+        let href = $(this).attr("href").slice(anchor);
+        prevScroll = $(main).scrollLeft();
+
+        $(main).scrollLeft(document.querySelector(href).offsetLeft);
+    });
+
+    $(links).on("mouseout", function () {
+        $(main).scrollLeft(prevScroll);
+    });
+
+    $('.swipe-to-next').on("click", function () {
+        let nextSec = $(this).parents('section').next();
+        if(vertical) {
+            $(main).animate({
+                scrollTop: $(nextSec).offset().top
+            }, 500);
+        } else {
+            $(main).animate({
+                scrollLeft: $(nextSec).offset().left
+            }, 500);
+        }
+    });
+
+    $(links).on("click", function () {
+        prevScroll = $(main).scrollLeft();
+    });
 
     $('button.reservation').on('click', function () {
         openPopup('reservation');
@@ -262,7 +338,7 @@ $(document).ready(function () {
     });
 
     $('.popup form input[name=date]').on('change', function () {
-        if($(this).val().length == 0) {
+        if($(this).val().length === 0) {
             $(this).parent().removeClass('triggered');
         }
     });
@@ -276,7 +352,7 @@ $(document).ready(function () {
             f = $('#cert-'+t);
 
         if($(this).val().length > 0) {
-            $(f).html((t == "amount") ? $(this).val()+"€" : $(this).val());
+            $(f).html((t == "amount") ? $(this).val()+"€": $(this).val());
         } else {
             $(f).html("&nbsp;");
         }
@@ -299,9 +375,9 @@ $(document).ready(function () {
                 success: (res)=>{
                     if(res == '1') {
                         $("#reservation").removeClass("shown");
-                        openMesBox('Merci', "Un million de mercis");
+                        openMesBox('Thanks', "Thanks a million");
                     } else {
-                        openMesBox('Erreur', "Quelque chose s’est mal passé. Merci de réessayer ultérieurement.");
+                        openMesBox('Error', "Something went wrong. Please try again later.");
                     }
                 }
             })
@@ -365,4 +441,16 @@ $(document).ready(function () {
         localStorage.setItem('cookie-agree', "1");
         document.querySelector('.cookie-policy').classList.remove('shown');
     });
+});
+
+window.addEventListener('load', ()=>{
+    document.querySelector("body").classList.remove("preloader-opened");
+    setTimeout(()=>{
+        document.querySelector(".map iframe").src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.185593639847!2d2.2961792158602865!3d48.87373840757964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fea4bb88ac7:0x8dcaef984736d93e!2sEdern!5e0!3m2!1sfr!2sfr!4v1576352306700!5m2!1sfr!2sfr";
+    }, 1000);
+    //Lazy loading
+    let llImages = document.querySelectorAll("img[data-lazy]");
+    for(let image of llImages) {
+        image.src = image.dataset.lazy;
+    }
 });

@@ -35,6 +35,7 @@ function resetCertForm() {
 }
 
 let ppInit = () => {
+    document.querySelector(".third-form .fields").innerHTML = "";
     paypal.Buttons({
         createOrder: function(data, actions) {
             let amount = document.querySelector('input[data-cert=amount]').value;
@@ -142,41 +143,6 @@ $(document).ready(function () {
         })
     }
 
-    ppInit = () => {
-        paypal.Buttons({
-            createOrder: function(data, actions) {
-                let amount = document.querySelector('input[data-cert=amount]').value;
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: amount.toString(),
-                            currency_code: 'EUR'
-                        }
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                // This function captures the funds from the transaction.
-                openMesBox("Paiement traité","Le certificat sera envoyé bientôt");
-                resetCertForm();
-                return actions.order.capture().then(function(details) {
-                    let fd = new FormData();
-                    fd.append('orderID', data.orderID);
-                    fd.append('action', 'check-order');
-                    fd.append('receiverName', $('#cert [data-cert=to]').val());
-                    fd.append('senderName', $('#cert [data-cert=from]').val());
-                    fd.append('sender', $('#cert [name=your-name]').val());
-                    fd.append('senderEmail', $('#cert [name=your-email]').val());
-                    fd.append('receiverEmail', $('#cert [name=email-to]').val());
-                    return fetch(API, {
-                        method: 'post',
-                        body: fd
-                    });
-                });
-            }
-        }).render('#cert .third-form .fields');
-    }
-
     $('.message-box .shadow, .message-box .close-mes-box').on('click', closeMesBox);
 
     function toggleMenu() {
@@ -238,8 +204,6 @@ $(document).ready(function () {
         draggable: false,
         swipe: false
     });
-
-    $(".map iframe").attr("src", "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d862.007839245216!2d2.2975583802191553!3d48.87397606029203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fea4ba8872f%3A0xe9b7b4b4f4024772!2zNiBSdWUgQXJzw6huZSBIb3Vzc2F5ZSwgNzUwMDggUGFyaXMsINCk0YDQsNC90YbQuNGP!5e0!3m2!1sru!2sru!4v1573306475072!5m2!1sru!2sru");
 
     $(".slick-dots li").append('<svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0 0 17 17"><g stroke-width="1"><circle class="circle" cx="8.5" cy="8.5" r="8" fill="none" stroke="#ffffff" /></g></svg>');
 
@@ -315,17 +279,15 @@ $(document).ready(function () {
     let prevScroll = 0,
         links = $(".nav li a");
 
-    $.mask.definitions['@'] = '[0-3]';
-    $.mask.definitions['!'] = '[0-2]';
-    $.mask.definitions['~'] = '[0-1]';
-    $('input[name=date]').mask("@9/~9/!!99");
-
-    new PerfectScrollbar('#cert .form-inner', {
-        suppressScrollX: true
+    $('input[name=date]').datepicker({
+        minDate: 0,
+        maxDate: "+12M",
+        dateFormat: 'dd/mm/yy',
     });
 
     $(links).on("mouseover", function () {
-        let href = $(this).attr("href").slice(1);
+        let anchor = $(this).attr("href").indexOf('#');
+        let href = $(this).attr("href").slice(anchor);
         prevScroll = $(main).scrollLeft();
 
         $(main).scrollLeft(document.querySelector(href).offsetLeft);
@@ -357,15 +319,26 @@ $(document).ready(function () {
     });
 
     $('.popup .close-popup').on('click', function () {
-        $(this).parent('.popup').removeClass('shown');
+        let p = $(this).parent('.popup');
+        $(p).removeClass('shown');
+        $(p).find("input, textarea").each(function () {
+            $(this).val("");
+            $(this).blur();
+        });
     });
 
     $('.popup form input, .popup form textarea').on('focus', function () {
         $(this).parent().addClass('triggered');
     });
 
-    $('.popup form input, .popup form textarea').on('blur', function () {
+    $('.popup form input:not([name=date]), .popup form textarea').on('blur', function () {
         if($(this).val().length == 0) {
+            $(this).parent().removeClass('triggered');
+        }
+    });
+
+    $('.popup form input[name=date]').on('change', function () {
+        if($(this).val().length === 0) {
             $(this).parent().removeClass('triggered');
         }
     });
@@ -402,9 +375,9 @@ $(document).ready(function () {
                 success: (res)=>{
                     if(res == '1') {
                         $("#reservation").removeClass("shown");
-                        openMesBox('Thanks', "Thanks a million");
+                        openMesBox('Merci', "Un million de mercis");
                     } else {
-                        openMesBox('Error', "Something went wrong. Please try again late");
+                        openMesBox('Erreur', "Quelque chose s’est mal passé. Merci de réessayer ultérieurement.");
                     }
                 }
             })
@@ -433,6 +406,7 @@ $(document).ready(function () {
         if($(cert).hasClass('second-slide')) {
             $(cert).removeClass('second-slide');
         } else {
+            ppInit();
             $(cert).removeClass('third-slide');
             $(cert).addClass('second-slide');
         }
@@ -470,5 +444,13 @@ $(document).ready(function () {
 });
 
 window.addEventListener('load', ()=>{
-   document.querySelector("body").classList.remove("preloader-opened");
+    document.querySelector("body").classList.remove("preloader-opened");
+    setTimeout(()=>{
+        document.querySelector(".map iframe").src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.185593639847!2d2.2961792158602865!3d48.87373840757964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fea4bb88ac7:0x8dcaef984736d93e!2sEdern!5e0!3m2!1sfr!2sfr!4v1576352306700!5m2!1sfr!2sfr";
+    }, 1000);
+    //Lazy loading
+    let llImages = document.querySelectorAll("img[data-lazy]");
+    for(let image of llImages) {
+        image.src = image.dataset.lazy;
+    }
 });

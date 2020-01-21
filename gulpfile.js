@@ -60,7 +60,8 @@ gulp.task('scripts', function() {
 gulp.task('page-scripts', function () {
 	return gulp.src([
 		'app/js/index.js',
-		'app/js/privacy.js'
+		'app/js/privacy.js',
+		'app/js/index-en.js'
 	])
 		.pipe(uglify())
 		.pipe(gulp.dest('app/js/dist/'))
